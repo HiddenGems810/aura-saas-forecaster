@@ -3,6 +3,7 @@ export const metadata = {
   description:
     'Read the full Terms of Service for Aura SaaS Insights, covering acceptable use, disclaimers, intellectual property, and governing law.',
 };
+import Link from 'next/link';
 
 export default function TermsOfService() {
   return (
@@ -47,7 +48,7 @@ export default function TermsOfService() {
             <li>Transmit any unsolicited or unauthorized advertising or promotional material</li>
             <li>Attempt to reverse-engineer, decompile, or disassemble any portion of the Service</li>
             <li>Use automated scripts, bots, or scrapers to access or interact with the Service at scale</li>
-            <li>Reproduce or redistribute the Service's branding, design, or source code without written permission</li>
+            <li>Reproduce or redistribute the Service&apos;s branding, design, or source code without written permission</li>
           </ul>
 
           <h2>5. Intellectual Property</h2>
@@ -101,8 +102,8 @@ export default function TermsOfService() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-[var(--border-color)]/30 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between text-sm text-[var(--text-secondary)]">
-          <a href="/" className="hover:text-[var(--accent-color)] transition-colors">&larr; Back to Forecaster</a>
-          <a href="/privacy" className="hover:text-[var(--accent-color)] transition-colors">Privacy Policy &rarr;</a>
+          <Link href="/" className="hover:text-[var(--accent-color)] transition-colors">&larr; Back to Forecaster</Link>
+          <Link href="/privacy" className="hover:text-[var(--accent-color)] transition-colors">Privacy Policy &rarr;</Link>
         </div>
       </div>
     </div>

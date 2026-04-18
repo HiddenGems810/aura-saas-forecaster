@@ -121,21 +121,64 @@ input[type=range]:hover::-moz-range-thumb {
 
   @page {
     size: letter portrait;
-    margin: 1.5cm;
-    @bottom-center {
-      content: "AURA SaaS Insights  •  Confidential Growth Report  •  Page " counter(page);
-      font-family: inherit; font-size: 8pt; color: #777;
-    }
+    /* Extra bottom margin reserves space for the fixed footer */
+    margin: 1.5cm 1.5cm 3cm;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    break-after: avoid; page-break-after: avoid; color: black !important;
+  /* ── Page-break rules — prevent headers being orphaned ─── */
+  h1, h2, h3, h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+    color: black !important;
   }
+
+  /* Keep each major card section on one page where possible */
+  section, article, .bg-\[var\(--card-bg\)\],
+  .prose, .editorial-prose {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Force a new page before each major logical section */
+  .print-page-break-before {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  /* Prevent the last-row table cells from splitting across pages */
+  table { break-inside: avoid; page-break-inside: avoid; }
+  tr    { break-inside: avoid; page-break-inside: avoid; }
 
   .print-center-block {
     margin-left: auto !important; margin-right: auto !important;
-    float: none !important; page-break-inside: avoid;
+    float: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   .recharts-wrapper, .recharts-surface { background: white !important; }
+
+  /* ── PDF page footer — repeats on every printed page ─────
+     position: fixed places it at the bottom of every page
+     in print context without needing @bottom-center support  */
+  .pdf-page-footer {
+    display: block !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2cm;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7.5pt;
+    color: #9ca3af;
+    font-family: inherit;
+    letter-spacing: 0.04em;
+    background: white;
+    padding: 0 1.5cm;
+    z-index: 9999;
+  }
 }
+

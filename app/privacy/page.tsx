@@ -3,6 +3,7 @@ export const metadata = {
   description:
     'Read the full Privacy Policy for Aura SaaS Insights, covering data collection, advertising, cookies, GDPR rights, and CCPA rights.',
 };
+import Link from 'next/link';
 
 export default function PrivacyPolicy() {
   return (
@@ -116,8 +117,8 @@ export default function PrivacyPolicy() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-[var(--border-color)]/30 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between text-sm text-[var(--text-secondary)]">
-          <a href="/" className="hover:text-[var(--accent-color)] transition-colors">&larr; Back to Forecaster</a>
-          <a href="/terms" className="hover:text-[var(--accent-color)] transition-colors">Terms of Service &rarr;</a>
+          <Link href="/" className="hover:text-[var(--accent-color)] transition-colors">&larr; Back to Forecaster</Link>
+          <Link href="/terms" className="hover:text-[var(--accent-color)] transition-colors">Terms of Service &rarr;</Link>
         </div>
       </div>
     </div>
