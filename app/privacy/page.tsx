@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
 
           <h2>1. About This Policy</h2>
           <p>
-            This Privacy Policy explains how Aura SaaS Insights (&quot;Aura,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) handles information when you use our free SaaS MRR forecasting tool at aura-insights.com (the &quot;Service&quot;). We are committed to protecting your privacy and operating in full compliance with applicable data protection law, including the European Union General Data Protection Regulation (GDPR), the California Consumer Privacy Act (CCPA), and Google AdSense program policies.
+            This Privacy Policy explains how Aura SaaS Insights (&quot;Aura,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) handles information when you use our free SaaS MRR forecasting tool at aurarevenue.com (the &quot;Service&quot;). We are committed to protecting your privacy and operating in full compliance with applicable data protection law, including the European Union General Data Protection Regulation (GDPR), the California Consumer Privacy Act (CCPA), and Google AdSense program policies.
           </p>
 
           <h2>2. Information We Collect</h2>
@@ -106,7 +106,7 @@ export default function PrivacyPolicy() {
           <h2>9. Contact Information</h2>
           <p>
             If you have any questions, requests, or concerns regarding this Privacy Policy, please contact us at:{' '}
-            <a href="mailto:privacy@aura-insights.com">privacy@aura-insights.com</a>
+            <a href="mailto:privacy@aurarevenue.com">privacy@aurarevenue.com</a>
           </p>
 
           <h2>10. Changes to This Policy</h2>

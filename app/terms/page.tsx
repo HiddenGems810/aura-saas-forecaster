@@ -18,7 +18,7 @@ export default function TermsOfService() {
 
           <h2>1. Agreement to Terms</h2>
           <p>
-            By accessing or using Aura SaaS Insights (&quot;Aura,&quot; &quot;the Service,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) at aura-insights.com, you agree to be bound by these Terms of Service (&quot;Terms&quot;). If you do not agree to all of these Terms, you may not access or use the Service. These Terms apply to all visitors, users, and others who access or use the Service.
+            By accessing or using Aura SaaS Insights (&quot;Aura,&quot; &quot;the Service,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) at aurarevenue.com, you agree to be bound by these Terms of Service (&quot;Terms&quot;). If you do not agree to all of these Terms, you may not access or use the Service. These Terms apply to all visitors, users, and others who access or use the Service.
           </p>
 
           <h2>2. Description of Service</h2>
@@ -96,7 +96,7 @@ export default function TermsOfService() {
           <h2>11. Contact Us</h2>
           <p>
             If you have any questions about these Terms of Service, please contact us at:{' '}
-            <a href="mailto:legal@aura-insights.com">legal@aura-insights.com</a>
+            <a href="mailto:legal@aurarevenue.com">legal@aurarevenue.com</a>
           </p>
 
         </div>
