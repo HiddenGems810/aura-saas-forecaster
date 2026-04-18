@@ -1,0 +1,141 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --bg-color: #050507;
+  --card-bg: rgba(20, 20, 25, 0.7);
+  --accent-color: #d4af37;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0b0;
+  --border-color: rgba(212, 175, 55, 0.2);
+  --font-family: var(--font-inter), 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  background-image:
+    radial-gradient(circle at 0% 0%,   rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 100% 100%, rgba(0, 245, 255, 0.05) 0%, transparent 40%);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  min-height: 100vh;
+}
+
+/* ── Tabular numbers — prevents layout jitter on animated counters ────────── */
+.tabular-nums, .font-mono { font-variant-numeric: tabular-nums; }
+
+/* ── Milestone shimmer reward animation ──────────────────────────────────── */
+@keyframes milestoneShimmer {
+  0%   { text-shadow: 0 0 0px rgba(212,175,55,0); }
+  15%  { text-shadow: 0 0 50px rgba(255,255,255,1), 0 0 80px rgba(212,175,55,0.8), 0 0 120px rgba(212,175,55,0.6); color: #fff; }
+  50%  { text-shadow: 0 0 30px rgba(212,175,55,0.6), 0 0 60px rgba(212,175,55,0.4); }
+  100% { text-shadow: 0 0 0px rgba(212,175,55,0); }
+}
+.milestone-shimmer { animation: milestoneShimmer 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+
+/* ── Editorial prose ─────────────────────────────────────────────────────── */
+.editorial-prose p  { line-height: 2; margin-bottom: 1.8em; letter-spacing: 0.015em; font-size: 1.125rem; }
+.editorial-prose li { line-height: 2; margin-bottom: 0.8em;  letter-spacing: 0.015em; font-size: 1.125rem; }
+
+/* ── Ad Slot CLS protection ──────────────────────────────────────────────────
+   All ad containers use:
+     • min-height  — reserves vertical space before ad content loads
+     • min-width   — prevents horizontal collapse on flex parents
+     • contain: layout — isolates reflow to within each container
+   These three together guarantee a CLS score of 0 once live ads inject.
+
+   IAB standard sizes:
+     Leaderboard  728 × 90  → min-height: 90px
+     Rectangle    300 × 250 → min-height: 250px, width: 300px
+     Multiplex    variable  → min-height: 200px per card              */
+.ad-slot-leaderboard {
+  min-height: 90px;
+  min-width: 300px;
+  contain: layout;
+}
+.ad-slot-rectangle {
+  min-height: 250px;
+  width: 300px;
+  max-width: 100%;
+  contain: layout;
+}
+
+/* ── House Ad Cards — fixed aspect-ratio prevents CLS on live ad injection ──
+   aspect-ratio: 3/2 at ~25% viewport width ≈ 200px tall on 1280px screens.
+   min-height: 200px is the mobile safety floor.                            */
+.house-ad-card {
+  min-height: 200px;
+  aspect-ratio: 3 / 2;
+  contain: layout;
+}
+
+/* ── Range Slider ─────────────────────────────────────────────────────────── */
+input[type=range] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 4px; background: #2a2a35;
+  border-radius: 2px; outline: none; transition: all 0.2s ease;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 12px; height: 12px; background: var(--accent-color);
+  border: 2.5px solid white;
+  border-radius: 50%; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6), 0 0 10px rgba(212,175,55,0.3);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+input[type=range]:hover::-webkit-slider-thumb {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.7), 0 0 20px rgba(212,175,55,0.5);
+  transform: scale(1.25);
+}
+input[type=range]::-moz-range-thumb {
+  width: 12px; height: 12px; background: var(--accent-color);
+  border: 2.5px solid white;
+  border-radius: 50%; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6), 0 0 10px rgba(212,175,55,0.3);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+input[type=range]:hover::-moz-range-thumb {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.7), 0 0 20px rgba(212,175,55,0.5);
+  transform: scale(1.25);
+}
+
+/* Mobile: 44px minimum touch target */
+@media (max-width: 768px) {
+  input[type=range] {
+    height: 44px;
+    background: linear-gradient(
+      transparent calc(50% - 2px), #2a2a35 calc(50% - 2px),
+      #2a2a35 calc(50% + 2px), transparent calc(50% + 2px)
+    );
+  }
+  .house-ad-card { aspect-ratio: unset; }
+}
+
+/* ── Print / PDF ─────────────────────────────────────────────────────────── */
+@media print {
+  body { background-color: white !important; background-image: none !important; color: black !important; }
+
+  .no-print { display: none !important; }
+
+  .print\:block { display: block !important; }
+
+  @page {
+    size: letter portrait;
+    margin: 1.5cm;
+    @bottom-center {
+      content: "AURA SaaS Insights  •  Confidential Growth Report  •  Page " counter(page);
+      font-family: inherit; font-size: 8pt; color: #777;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid; page-break-after: avoid; color: black !important;
+  }
+
+  .print-center-block {
+    margin-left: auto !important; margin-right: auto !important;
+    float: none !important; page-break-inside: avoid;
+  }
+
+  .recharts-wrapper, .recharts-surface { background: white !important; }
+}
