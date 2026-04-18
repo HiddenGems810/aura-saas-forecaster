@@ -180,6 +180,24 @@ export default function Home() {
     return () => clearTimeout(t);
   }, []);
 
+  // PDF Print handlers: Force all FAQ details open before capturing, close after
+  useEffect(() => {
+    const handleBeforePrint = () => {
+      document.querySelectorAll('details').forEach(d => d.setAttribute('open', ''));
+    };
+    const handleAfterPrint = () => {
+      document.querySelectorAll('details').forEach(d => d.removeAttribute('open'));
+    };
+
+    window.addEventListener('beforeprint', handleBeforePrint);
+    window.addEventListener('afterprint', handleAfterPrint);
+
+    return () => {
+      window.removeEventListener('beforeprint', handleBeforePrint);
+      window.removeEventListener('afterprint', handleAfterPrint);
+    };
+  }, []);
+
   const handleShare = () => {
     setPulseShare(false);
     navigator.clipboard.writeText(
