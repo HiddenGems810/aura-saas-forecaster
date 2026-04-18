@@ -113,7 +113,34 @@ input[type=range]:hover::-moz-range-thumb {
 
 /* ── Print / PDF ─────────────────────────────────────────────────────────── */
 @media print {
-  body { background-color: white !important; background-image: none !important; color: black !important; }
+  :root {
+    --text-primary: #1a1a1a !important;
+    --text-secondary: #4a4a4a !important;
+    --border-color: #dddddd !important;
+    --bg-color: #ffffff !important;
+  }
+
+  body { 
+    background-color: white !important; 
+    background-image: none !important; 
+    color: #1a1a1a !important; 
+  }
+
+  .text-white {
+    color: #1a1a1a !important;
+  }
+
+  strong {
+    color: #000000 !important;
+  }
+
+  details {
+    display: block !important;
+  }
+
+  details summary ~ * {
+    display: block !important;
+  }
 
   .no-print { display: none !important; }
 
@@ -133,8 +160,7 @@ input[type=range]:hover::-moz-range-thumb {
   }
 
   /* Keep each major card section on one page where possible */
-  section, article, .bg-\[var\(--card-bg\)\],
-  .prose, .editorial-prose {
+  .bg-\[var\(--card-bg\)\], .house-ad-card {
     break-inside: avoid;
     page-break-inside: avoid;
   }
