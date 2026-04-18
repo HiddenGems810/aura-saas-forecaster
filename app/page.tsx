@@ -260,7 +260,7 @@ export default function Home() {
       <h1 className="sr-only">SaaS MRR Calculator — Free Revenue & Churn Forecaster</h1>
 
       {/* ── Main ─────────────────────────────────────────────────────────── */}
-      <motion.div variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.25 } } }}
+      <motion.div variants={{ hidden: { opacity: 1 }, show: { opacity: 1, transition: { staggerChildren: 0.25 } } }}
         initial="hidden" animate="show"
         className="flex flex-col max-w-7xl mx-auto w-full px-6 md:px-12 mt-8 flex-grow z-10">
 
@@ -268,7 +268,7 @@ export default function Home() {
 
           {/* Controls */}
           <motion.section layout
-            variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } } }}
+            variants={{ hidden: { opacity: 1, y: 0 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } } }}
             className="bg-[var(--card-bg)] backdrop-blur-[20px] border border-[var(--border-color)] rounded-[16px] p-6 flex flex-col shadow-2xl no-print">
             <h2 className="text-[14px] font-semibold tracking-[1.5px] uppercase text-[var(--text-secondary)] mb-6 border-b border-[var(--border-color)] pb-3">Logic Controller</h2>
 
@@ -332,7 +332,7 @@ export default function Home() {
             <div ref={chartRef} className="flex flex-col gap-6 p-2 -m-2 bg-[var(--bg-color)] sm:bg-transparent">
 
               {/* Hero Metric */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } } }}
+              <motion.div variants={{ hidden: { opacity: 1, y: 0 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } } }}
                 className="bg-[var(--card-bg)] backdrop-blur-[20px] border border-[var(--border-color)] rounded-[16px] p-8 flex flex-col items-center justify-center relative overflow-hidden shadow-2xl">
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--accent-color)] rounded-full blur-[150px] opacity-10 pointer-events-none translate-x-1/2 -translate-y-1/2" />
                 <h2 className="text-[14px] font-semibold tracking-[2px] uppercase text-[var(--text-secondary)] mb-4 z-10">Total {months}-Month Outlook</h2>
@@ -475,7 +475,7 @@ export default function Home() {
               </AnimatePresence>
             </motion.div>
 
-            <div className="w-full mt-4 flex justify-center no-print" aria-label="Advertisement">
+            <div className="w-full mt-4 flex justify-center no-print" role="region" aria-label="Advertisement">
               <ins className="adsbygoogle"
                 style={{ display: 'block', width: '100%', maxWidth: '728px' }}
                 data-ad-client="ca-pub-9712970521775555"
