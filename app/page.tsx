@@ -423,7 +423,7 @@ export default function Home() {
             </div>
 
             {/* Raw Data Table */}
-            <motion.div layout className="bg-[var(--card-bg)] backdrop-blur-[20px] border border-[var(--border-color)] rounded-[16px] overflow-hidden shadow-2xl">
+            <motion.div layout className="bg-[var(--card-bg)] backdrop-blur-[20px] border border-[var(--border-color)] rounded-[16px] overflow-hidden shadow-2xl print-page-break-before">
               <button id="btn-toggle-table" onClick={() => setShowTable(!showTable)}
                 className="w-full flex items-center justify-between p-6 hover:bg-white/5 transition-colors focus:outline-none">
                 <h2 className="text-[14px] font-semibold tracking-[1.5px] uppercase text-[var(--text-secondary)]">Raw Data Details</h2>
@@ -431,8 +431,8 @@ export default function Home() {
               </button>
               <AnimatePresence>
                 {showTable && (
-                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: 'easeInOut' }} className="px-6 pb-6 overflow-hidden">
-                    <div className="overflow-x-auto max-h-[400px] border border-white/10 rounded-xl rounded-t-none border-t-0 p-1 custom-scrollbar">
+                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: 'easeInOut' }} className="px-6 pb-6 overflow-hidden print:overflow-visible">
+                    <div className="overflow-x-auto max-h-[400px] border border-white/10 rounded-xl rounded-t-none border-t-0 p-1 custom-scrollbar print:max-h-none print:overflow-visible">
                       <table className="w-full text-left text-[13px] border-collapse min-w-[300px]">
                         <thead className="sticky top-0 bg-[#16161c] z-10 shadow-md">
                           <tr>

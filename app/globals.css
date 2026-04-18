@@ -134,13 +134,10 @@ input[type=range]:hover::-moz-range-thumb {
     color: #000000 !important;
   }
 
-  details {
-    display: block !important;
-  }
-
-  details summary ~ * {
-    display: block !important;
-  }
+  details { display: block !important; }
+  details[open] summary ~ * { display: block !important; }
+  details:not([open]) summary ~ * { display: block !important; }
+  details summary::marker { display: none; }
 
   .no-print { display: none !important; }
 
