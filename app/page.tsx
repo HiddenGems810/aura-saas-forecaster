@@ -239,6 +239,7 @@ export default function Home() {
           <Share2 size={14} /><span>Flex</span>
         </button>
       </header>
+      <h1 className="sr-only">SaaS MRR Calculator — Free Revenue & Churn Forecaster</h1>
 
       {/* ── Main ─────────────────────────────────────────────────────────── */}
       <motion.div variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.25 } } }}
@@ -477,7 +478,7 @@ export default function Home() {
         <section className="mt-20 max-w-3xl mx-auto w-full text-[var(--text-secondary)]">
           <article className="prose prose-invert prose-lg prose-headings:text-[var(--text-primary)] prose-a:text-[var(--accent-color)] opacity-90 leading-relaxed font-sans editorial-prose print-center-block">
 
-            <h2 id="saas-velocity" className="text-3xl font-bold tracking-tight mb-6">Understanding Your SaaS Velocity</h2>
+            <h2 id="saas-velocity" className="text-3xl font-bold tracking-tight mb-6">Understanding Your SaaS MRR Velocity</h2>
             <p className="mb-6">SaaS businesses scale fundamentally differently from traditional retail or service models. The defining advantage is <strong className="text-white font-semibold">subscription compounding</strong>—every new customer you acquire doesn&apos;t just contribute a single transaction; it permanently layers a new revenue stream on top of all existing ones. Month after month, that stack grows taller.</p>
             <p className="mb-6">This is why Monthly Recurring Revenue (MRR) is the single most important metric in any SaaS business. It isn&apos;t simply &quot;revenue&quot;—it is a velocity indicator. A business at $10,000 MRR growing at 8% monthly is building compounding momentum that accelerates faster the longer it is sustained. By month 36, that $10K baseline reaches over $100K MRR. By month 60, it surpasses $320K monthly—a 32× multiplier from the starting point.</p>
             <p className="mb-10">Churn acts as a constant drag coefficient on your compounding engine. Even a 3% monthly churn rate means you are losing over one-third of your customer base annually. When layered against modest growth rates, your trajectory flattens into stagnation. Aura models the <em>net</em> growth factor—growth minus churn—rather than gross acquisition alone. The curve is the honest picture.</p>
@@ -512,7 +513,7 @@ export default function Home() {
             </ul>
             <p className="mb-10">Each month&apos;s output becomes the next month&apos;s input, creating the exponential curve. The cumulative total in the hero metric is the running sum of all monthly revenues—total cash received over the full window, not just the final month&apos;s annualized run rate. A business projecting $500K MRR at month 60 may have generated $8M+ in cumulative revenue—the true wealth-creation figure for planning purposes.</p>
 
-            <h2 id="improve-outlook" className="text-2xl font-bold tracking-tight mt-12 mb-6">How to Improve Your Outlook</h2>
+            <h2 id="improve-outlook" className="text-2xl font-bold tracking-tight mt-12 mb-6">How to Improve Your SaaS Revenue Outlook</h2>
             <p className="mb-6">If your projection falls short of your financial independence target, the sliders reveal the precise levers available. Small, sustained improvements compound dramatically over 36–60 months.</p>
             <ol className="space-y-8 list-decimal pl-6 mb-10">
               <li>
@@ -537,6 +538,26 @@ export default function Home() {
             <p className="mb-6">The &quot;Industry Avg&quot; toggle overlays a benchmark of 3% monthly growth and 5% monthly churn—derived from published SaaS data across early-stage B2B companies. This represents a <em>median</em> trajectory, not best-in-class. Understanding where you sit relative to this baseline is critical context for planning.</p>
             <p className="mb-6">Top-quartile SaaS companies maintain monthly churn below 1% and net growth rates above 12%. If your curve significantly outpaces the benchmark overlay, your inputs may reflect aspirational targets—use the tool to model both your current baseline and target state to understand the realistic gap.</p>
             <p className="mb-10">The 7-Figure Milestone marker identifies the specific month your cumulative revenue crosses $1,000,000. For most early-stage founders starting at $5,000–$15,000 MRR with modest growth, this milestone falls between months 18 and 36. Founders who have already crossed it can use Aura to model their path to $10M and $50M cumulative—each represented by the milestone shimmer in the hero metric.</p>
+
+            {/* ── FAQ Section ─────────────────────────────────────────────────── */}
+            <h2 className="text-2xl font-bold tracking-tight mt-12 mb-6">Frequently Asked Questions</h2>
+            <div className="space-y-6">
+              {[
+                { q: 'What is MRR in SaaS?', a: 'MRR (Monthly Recurring Revenue) is the total predictable revenue a SaaS business generates each month from active subscriptions. It is the single most important metric for measuring SaaS growth velocity.' },
+                { q: 'How do I calculate SaaS MRR growth?', a: 'SaaS MRR growth is calculated using the formula: MRR_n = MRR_(n-1) × (1 + growth rate − churn rate). Each month compounds on the previous, creating exponential growth when growth consistently exceeds churn.' },
+                { q: 'What is a good churn rate for SaaS?', a: 'A good monthly churn rate for SaaS is below 2%. Top-quartile SaaS companies maintain churn below 1% monthly. Anything above 5% monthly churn will significantly drag on long-term revenue compounding.' },
+                { q: 'How long does it take a SaaS business to reach $1 million in revenue?', a: 'For most SaaS businesses starting at $5,000–$15,000 MRR with healthy growth rates, reaching $1 million in cumulative revenue typically takes 18–36 months. Use the sliders above to model your specific timeline.' },
+                { q: 'Is this MRR calculator free?', a: 'Yes. Aura is completely free to use with no sign-up required. You can model your MRR growth, churn impact, and export a full PDF report instantly.' },
+              ].map(({ q, a }) => (
+                <details key={q} className="border border-[var(--border-color)] rounded-xl p-5 bg-[var(--card-bg)] backdrop-blur-sm group">
+                  <summary className="font-semibold text-white cursor-pointer list-none flex justify-between items-center gap-4">
+                    {q}
+                    <span className="text-[var(--accent-color)] text-lg flex-shrink-0">+</span>
+                  </summary>
+                  <p className="mt-3 text-[var(--text-secondary)] leading-relaxed text-[14px]">{a}</p>
+                </details>
+              ))}
+            </div>
           </article>
         </section>
 
