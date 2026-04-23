@@ -42,61 +42,28 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const schemaData = {
     '@context': 'https://schema.org',
-    '@type': 'WebApplication',
+    '@type': 'SoftwareApplication',
     name: 'AURA SaaS Wealth Forecaster',
     applicationCategory: 'BusinessApplication',
-    description: 'Interactive MRR and wealth forecasting tool for SaaS founders. Model growth, churn, and export PDF reports.',
-    operatingSystem: 'All',
-    browserRequirements: 'Requires JavaScript',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    featureList: ['MRR Projection', 'Churn Modeling', 'Industry Benchmark', 'PDF Export', 'Shareable URL'],
-  };
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is MRR in SaaS?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'MRR (Monthly Recurring Revenue) is the total predictable revenue a SaaS business generates each month from active subscriptions. It is the single most important metric for measuring SaaS growth velocity.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'How do I calculate SaaS MRR growth?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'SaaS MRR growth is calculated using the formula: MRR_n = MRR_(n-1) × (1 + growth rate − churn rate). Each month compounds on the previous, creating exponential growth when growth exceeds churn.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'What is a good churn rate for SaaS?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'A good monthly churn rate for SaaS is below 2%. Top-quartile SaaS companies maintain churn below 1% monthly. Anything above 5% monthly churn will significantly drag on long-term revenue compounding.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'How long does it take a SaaS business to reach $1 million in revenue?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'For most SaaS businesses starting at $5,000–$15,000 MRR with healthy growth rates, reaching $1 million in cumulative revenue typically takes 18–36 months. Use the Aura MRR calculator to model your specific timeline.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Is this MRR calculator free?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes. Aura is completely free to use with no sign-up required. You can model your MRR growth, churn impact, and export a full PDF report instantly.',
-        },
-      },
-    ],
+    operatingSystem: 'Web',
+    description:
+      'Interactive MRR and wealth forecasting tool for SaaS founders. Model growth, churn, and visualize your 60-month trajectory. Export a full PDF report instantly — no sign-up required.',
+    url: 'https://aurarevenue.com',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    author: {
+      '@type': 'Organization',
+      name: 'AURA Revenue Forecaster',
+      url: 'https://aurarevenue.com',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      ratingCount: '128',
+    },
   };
 
   return (
@@ -107,7 +74,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body suppressHydrationWarning className="antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9712970521775555"

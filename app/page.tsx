@@ -477,6 +477,7 @@ export default function Home() {
 
             <div className="w-full mt-4 flex justify-center no-print" role="region" aria-label="Advertisement">
               <ins className="adsbygoogle"
+                suppressHydrationWarning
                 style={{ display: 'block', width: '100%', maxWidth: '728px' }}
                 data-ad-client="ca-pub-9712970521775555"
                 data-ad-slot="REPLACE_WITH_YOUR_AD_SLOT_ID"
