@@ -18,7 +18,10 @@ export default function CalculatorPage() {
   return (
     <PageShell>
       <main className="mx-auto max-w-7xl px-5 py-12 sm:px-6 lg:px-8">
-        <h1 className="mb-8 text-4xl font-bold tracking-tight text-white">SaaS MRR Forecasting Calculator</h1>
+        <h1 className="text-4xl font-bold tracking-tight text-white">SaaS MRR Forecasting Calculator</h1>
+        <p className="mb-8 mt-4 max-w-3xl text-base leading-7 text-slate-300">
+          Use this SaaS MRR forecasting calculator to estimate future monthly recurring revenue, ARR run rate, churn impact, and cumulative forecast revenue based on your current MRR, growth rate, churn rate, and forecast period. The model is educational and uses simplified assumptions, so results should be treated as planning estimates rather than financial advice.
+        </p>
         <SaasCalculator />
       </main>
     </PageShell>
