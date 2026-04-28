@@ -6,6 +6,7 @@ export const LEGAL_EMAIL = 'legal@aurarevenue.com';
 
 export const primaryNav = [
   { href: '/calculator', label: 'Calculator' },
+  { href: '/tools', label: 'Tools' },
   { href: '/learn', label: 'Learn' },
   { href: '/templates', label: 'Templates' },
   { href: '/methodology', label: 'Methodology' },
@@ -24,7 +25,9 @@ export const footerNav = [
 export const importantPaths = [
   '/',
   '/calculator',
+  '/tools',
   '/learn',
+  '/learn/saas-kpi-glossary',
   '/templates',
   '/templates/saas-revenue-forecast',
   '/examples/saas-forecast-5000-mrr',

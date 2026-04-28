@@ -26,9 +26,16 @@ export default function TemplatesPage() {
           <Link href="/templates/saas-revenue-forecast" className="rounded-lg border border-white/10 bg-white/[0.04] p-6 hover:border-teal-300/40">
             <h2 className="text-2xl font-semibold text-white">Free SaaS Revenue Forecast Template</h2>
             <p className="mt-3 text-sm leading-6 text-slate-300">
-              A practical table structure with month, starting MRR, new MRR, expansion MRR, churned MRR, ending MRR, and ARR.
+              A practical downloadable CSV structure with month, starting MRR, new MRR, expansion MRR, churned MRR, ending MRR, ARR, and cumulative forecast revenue.
             </p>
             <span className="mt-5 inline-block text-sm font-semibold text-teal-300">Open template</span>
+          </Link>
+          <Link href="/tools" className="rounded-lg border border-white/10 bg-white/[0.04] p-6 hover:border-teal-300/40">
+            <h2 className="text-2xl font-semibold text-white">SaaS Calculator Toolkit</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-300">
+              Calculate ARR run rate, churn, CAC payback, Rule of 40, net revenue retention, and burn multiple before moving numbers into a spreadsheet.
+            </p>
+            <span className="mt-5 inline-block text-sm font-semibold text-teal-300">Open calculators</span>
           </Link>
           <Link href="/examples/saas-forecast-5000-mrr" className="rounded-lg border border-white/10 bg-white/[0.04] p-6 hover:border-teal-300/40">
             <h2 className="text-2xl font-semibold text-white">$5K MRR Forecast Example</h2>

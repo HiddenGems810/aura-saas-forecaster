@@ -4,6 +4,7 @@ import { CONTACT_EMAIL, SITE_NAME } from '@/lib/site';
 
 const productLinks = [
   { href: '/calculator', label: 'Calculator' },
+  { href: '/tools', label: 'Calculator Toolkit' },
   { href: '/templates', label: 'Templates' },
   { href: '/examples/saas-forecast-5000-mrr', label: 'Example Forecast' },
   { href: '/methodology', label: 'Methodology' },
@@ -15,6 +16,7 @@ const learnLinks = [
   { href: '/learn/churn-rate', label: 'Churn Rate' },
   { href: '/learn/saas-cac-payback', label: 'CAC Payback' },
   { href: '/learn/gross-revenue-retention-vs-net-revenue-retention', label: 'GRR vs NRR' },
+  { href: '/learn/saas-kpi-glossary', label: 'SaaS KPI Glossary' },
 ];
 
 const companyLinks = [

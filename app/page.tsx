@@ -53,7 +53,7 @@ const faq = [
   },
   {
     q: 'Can I export the forecast?',
-    a: 'Yes. Use the Copy CSV button inside the calculator to copy month-by-month forecast data. You can paste it into a spreadsheet and add operating details such as acquisition channels, pricing tiers, expansion revenue, or renewal timing.',
+    a: 'Yes. Use Download CSV inside the calculator to export month-by-month forecast data. You can also copy a summary or copy a scenario link for planning notes.',
   },
   {
     q: 'How often should I update my SaaS forecast?',
@@ -157,6 +157,9 @@ export default function Home() {
               </Link>
               <Link href="/learn/saas-growth-model" className="inline-flex items-center gap-2 rounded-md border border-white/15 px-4 py-3 text-sm font-semibold text-white hover:bg-white/10">
                 Learn forecasting
+              </Link>
+              <Link href="/tools" className="inline-flex items-center gap-2 rounded-md border border-white/15 px-4 py-3 text-sm font-semibold text-white hover:bg-white/10">
+                Explore tools
               </Link>
             </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -342,6 +345,7 @@ export default function Home() {
                     ['Understand churn', '/learn/churn-rate'],
                     ['Build a forecast', '/learn/saas-growth-model'],
                     ['Use the template', '/templates/saas-revenue-forecast'],
+                    ['Open calculator toolkit', '/tools'],
                   ].map(([label, href], index) => (
                     <Link key={label} href={href} className="rounded-md border border-white/10 bg-slate-950/35 p-4 text-sm font-semibold text-white hover:border-teal-300/40">
                       <span className="text-teal-300">{index + 1}.</span> {label}
