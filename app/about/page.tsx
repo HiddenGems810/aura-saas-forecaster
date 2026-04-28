@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'About Aura Revenue',
     description: 'Learn what Aura Revenue does, who it helps, why the forecasting tool exists, and how to contact the publisher.',
     url: '/about',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Aura Revenue SaaS MRR forecasting calculator dashboard' }],
   },
 };
 

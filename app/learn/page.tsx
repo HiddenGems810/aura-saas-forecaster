@@ -8,9 +8,10 @@ export const metadata: Metadata = {
   description: 'Educational guides for SaaS founders about MRR, ARR, churn, net revenue retention, benchmarks, and revenue forecasting.',
   alternates: { canonical: '/learn' },
   openGraph: {
-    title: 'Learn SaaS MRR, ARR, Churn, and Forecasting',
+    title: 'Learn SaaS MRR, ARR, Churn, and Forecasting | Aura Revenue',
     description: 'Educational guides for SaaS founders about MRR, ARR, churn, net revenue retention, benchmarks, and revenue forecasting.',
     url: '/learn',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Aura Revenue SaaS MRR forecasting calculator dashboard' }],
   },
 };
 

@@ -265,7 +265,7 @@ export default function Home() {
             <ul className="mt-4 space-y-2 text-base leading-7 text-amber-50/90">
               {modelExclusions.map((item) => (
                 <li key={item} className="flex gap-2">
-                  <span className="text-amber-200">-</span>
+                  <span className="text-amber-200">•</span>
                   <span>{item}</span>
                 </li>
               ))}

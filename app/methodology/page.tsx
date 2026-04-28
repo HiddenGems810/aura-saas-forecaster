@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: 'Aura Revenue Forecasting Methodology',
     description: 'How Aura Revenue calculates SaaS MRR projections, applies growth and churn, and explains forecast limitations.',
     url: '/methodology',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Aura Revenue SaaS MRR forecasting calculator dashboard' }],
   },
 };
 

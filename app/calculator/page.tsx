@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Forecast SaaS MRR, churn, ARR, and cumulative recurring revenue using clear educational assumptions.',
   alternates: { canonical: '/calculator' },
   openGraph: {
-    title: 'SaaS MRR Forecasting Calculator',
+    title: 'SaaS MRR Forecasting Calculator | Aura Revenue',
     description: 'Model SaaS MRR growth, churn impact, ARR run rate, and cumulative forecast revenue.',
     url: '/calculator',
     images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Aura Revenue SaaS MRR forecasting calculator dashboard' }],

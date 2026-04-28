@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'Privacy Policy | Aura Revenue',
     description: 'Privacy Policy for Aura Revenue, including calculator inputs, analytics, cookies, and advertising.',
     url: '/privacy',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Aura Revenue SaaS MRR forecasting calculator dashboard' }],
   },
 };
 

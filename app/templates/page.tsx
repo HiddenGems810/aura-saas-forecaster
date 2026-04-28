@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     title: 'SaaS Revenue Forecast Templates | Aura Revenue',
     description: 'Free SaaS revenue forecast templates for modeling MRR, new revenue, expansion, churned MRR, and ARR.',
     url: '/templates',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Aura Revenue SaaS MRR forecasting calculator dashboard' }],
   },
 };
 

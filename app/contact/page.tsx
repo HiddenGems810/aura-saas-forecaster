@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     title: 'Contact Aura Revenue',
     description: 'Contact Aura Revenue for general questions, privacy requests, legal notices, corrections, and publisher inquiries.',
     url: '/contact',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Aura Revenue SaaS MRR forecasting calculator dashboard' }],
   },
 };
 

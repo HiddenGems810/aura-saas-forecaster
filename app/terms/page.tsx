@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: 'Terms of Service | Aura Revenue',
     description: 'Terms of Service for Aura Revenue, including educational-use disclaimer, acceptable use, and no financial advice.',
     url: '/terms',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Aura Revenue SaaS MRR forecasting calculator dashboard' }],
   },
 };
 

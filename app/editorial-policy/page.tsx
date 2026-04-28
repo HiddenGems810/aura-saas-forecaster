@@ -7,9 +7,10 @@ export const metadata: Metadata = {
   description: 'Aura Revenue editorial policy for educational SaaS finance content, source handling, reviews, corrections, and disclaimers.',
   alternates: { canonical: '/editorial-policy' },
   openGraph: {
-    title: 'Editorial Policy',
+    title: 'Editorial Policy | Aura Revenue',
     description: 'Aura Revenue editorial policy for educational SaaS finance content, source handling, reviews, corrections, and disclaimers.',
     url: '/editorial-policy',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Aura Revenue SaaS MRR forecasting calculator dashboard' }],
   },
 };
 

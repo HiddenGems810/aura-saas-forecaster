@@ -9,9 +9,10 @@ export const metadata: Metadata = {
   description: 'A practical twelve-month SaaS forecast example for a business starting at $5,000 MRR with growth and churn assumptions.',
   alternates: { canonical: '/examples/saas-forecast-5000-mrr' },
   openGraph: {
-    title: 'Example: Forecasting a SaaS Business Starting at $5K MRR',
+    title: 'Example: Forecasting a SaaS Business Starting at $5K MRR | Aura Revenue',
     description: 'A practical twelve-month SaaS forecast example for a business starting at $5,000 MRR with growth and churn assumptions.',
     url: '/examples/saas-forecast-5000-mrr',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Aura Revenue SaaS MRR forecasting calculator dashboard' }],
   },
 };
 
