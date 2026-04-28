@@ -2,23 +2,29 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --bg-color: #050507;
-  --card-bg: rgba(20, 20, 25, 0.7);
-  --accent-color: #d4af37;
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0b0;
-  --border-color: rgba(212, 175, 55, 0.2);
+  --bg-color: #071010;
+  --card-bg: rgba(17, 25, 27, 0.82);
+  --accent-color: #35f2dd;
+  --text-primary: #f5fafa;
+  --text-secondary: #a9b8bd;
+  --border-color: rgba(37, 52, 56, 0.9);
   --font-family: var(--font-inter), 'Helvetica Neue', Arial, sans-serif;
 }
 
 body {
   background-color: var(--bg-color);
   background-image:
-    radial-gradient(circle at 0% 0%,   rgba(212, 175, 55, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 100% 100%, rgba(0, 245, 255, 0.05) 0%, transparent 40%);
+    linear-gradient(180deg, rgba(53, 242, 221, 0.08), transparent 460px),
+    linear-gradient(90deg, rgba(7, 16, 16, 0.86), rgba(7, 17, 18, 0.98));
   color: var(--text-primary);
   font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.65;
   min-height: 100vh;
+}
+
+a {
+  text-underline-offset: 3px;
 }
 
 /* ── Tabular numbers — prevents layout jitter on animated counters ────────── */
@@ -80,22 +86,22 @@ input[type=range]::-webkit-slider-thumb {
   width: 12px; height: 12px; background: var(--accent-color);
   border: 2.5px solid white;
   border-radius: 50%; cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.6), 0 0 10px rgba(212,175,55,0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6), 0 0 10px rgba(53,242,221,0.3);
   transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 input[type=range]:hover::-webkit-slider-thumb {
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7), 0 0 20px rgba(212,175,55,0.5);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.7), 0 0 20px rgba(53,242,221,0.5);
   transform: scale(1.25);
 }
 input[type=range]::-moz-range-thumb {
   width: 12px; height: 12px; background: var(--accent-color);
   border: 2.5px solid white;
   border-radius: 50%; cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.6), 0 0 10px rgba(212,175,55,0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6), 0 0 10px rgba(53,242,221,0.3);
   transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 input[type=range]:hover::-moz-range-thumb {
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7), 0 0 20px rgba(212,175,55,0.5);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.7), 0 0 20px rgba(53,242,221,0.5);
   transform: scale(1.25);
 }
 
@@ -204,4 +210,3 @@ input[type=range]:hover::-moz-range-thumb {
     z-index: 9999;
   }
 }
-

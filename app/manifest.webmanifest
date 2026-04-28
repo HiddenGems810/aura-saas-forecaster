@@ -1,0 +1,25 @@
+{
+  "name": "Aura Revenue SaaS MRR Forecasting Calculator",
+  "short_name": "Aura Revenue",
+  "description": "Educational SaaS MRR growth, churn, ARR, and revenue forecasting calculator.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1114",
+  "theme_color": "#0b1114",
+  "categories": ["finance", "business", "productivity"],
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
