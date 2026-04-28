@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { BarChart3, Calculator, Download, Percent, RefreshCw, Sigma, TrendingUp } from 'lucide-react';
+import { BarChart3, Calculator, Download, Percent, RefreshCw, Save, Sigma, TrendingUp } from 'lucide-react';
 import { useForecaster } from '@/hooks/use-forecaster';
 
 const bounds = {
@@ -11,6 +11,12 @@ const bounds = {
   churn: { min: 0, max: 30, step: 0.1, default: 2.1 },
   months: { min: 12, max: 120, step: 12, default: 60 },
 } as const;
+
+const scenarioPresets = [
+  { label: 'Conservative', growthRate: 3, churnRate: 4 },
+  { label: 'Base Case', growthRate: 8.5, churnRate: 2.1 },
+  { label: 'Aggressive', growthRate: 12, churnRate: 1.5 },
+];
 
 function parseParam(params: URLSearchParams, key: keyof typeof bounds) {
   const raw = params.get(key);
@@ -156,6 +162,14 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
   const [churnRate, setChurnRate] = useState(() => initialValues().churnRate);
   const [months, setMonths] = useState(() => initialValues().months);
   const [statusMessage, setStatusMessage] = useState('');
+  const [savedScenario, setSavedScenario] = useState<{
+    label: string;
+    startMrr: number;
+    growthRate: number;
+    churnRate: number;
+    months: number;
+    finalMrr: number;
+  } | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -174,6 +188,24 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
   const finalMrr = final?.revenue ?? 0;
   const finalArr = final?.arr ?? 0;
   const isDefaultScenario = startMrr === bounds.mrr.default && growthRate === bounds.growth.default && churnRate === bounds.churn.default && months === bounds.months.default;
+  const movementLabel = netMonthlyRate > 0 ? 'positive net revenue movement' : netMonthlyRate < 0 ? 'contraction risk' : 'flat net movement';
+  const interpretation =
+    netMonthlyRate > 0
+      ? 'This scenario shows positive net revenue movement because monthly growth is higher than monthly churn. The model projects MRR expansion over the forecast period, but the result depends heavily on whether the growth and churn assumptions remain realistic over time.'
+      : netMonthlyRate < 0
+        ? 'This scenario shows contraction risk because monthly churn is higher than monthly growth. The model projects pressure on MRR unless acquisition, expansion, retention, or pricing improves enough to offset lost recurring revenue.'
+        : 'This scenario shows flat net movement because monthly growth and monthly churn are equal. The model may keep MRR relatively stable, but small changes in either assumption can shift the forecast upward or downward.';
+  const longRangeNote = months > 36 ? ' Because this is a long-range forecast, small assumption changes can compound into large differences.' : '';
+  const assumptionMessages = [
+    netMonthlyRate > 0
+      ? 'Your growth rate is higher than your churn rate, which creates a positive net monthly rate. For stronger planning, compare this forecast with a conservative case using lower growth or higher churn.'
+      : netMonthlyRate < 0
+        ? 'Your churn rate is higher than your growth rate. Review retention, onboarding, customer fit, pricing, or expansion before treating this forecast as a durable plan.'
+        : 'Your growth and churn assumptions offset each other. Use a second scenario to test whether small changes create meaningful upside or downside.',
+    churnRate > 8 ? 'High churn can quickly weaken long-term MRR growth.' : '',
+    growthRate > 20 ? 'Very high monthly growth may be difficult to sustain for long periods.' : '',
+    months > 36 ? 'Long-range forecasts are more sensitive to small assumption changes.' : '',
+  ].filter(Boolean);
 
   const rows = useMemo(() => {
     const step = months <= 24 ? 1 : 12;
@@ -207,6 +239,26 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
     window.setTimeout(() => setStatusMessage(''), 2500);
   };
 
+  const applyPreset = (preset: (typeof scenarioPresets)[number]) => {
+    setGrowthRate(preset.growthRate);
+    setChurnRate(preset.churnRate);
+    setStatusMessage(`${preset.label} assumptions applied.`);
+    window.setTimeout(() => setStatusMessage(''), 2500);
+  };
+
+  const saveScenario = () => {
+    setSavedScenario({
+      label: 'Scenario A',
+      startMrr,
+      growthRate,
+      churnRate,
+      months,
+      finalMrr,
+    });
+    setStatusMessage('Saved current scenario for comparison.');
+    window.setTimeout(() => setStatusMessage(''), 2500);
+  };
+
   return (
     <section id="calculator" className="scroll-mt-24">
       {showIntro ? (
@@ -231,6 +283,21 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
               <p className="text-sm text-slate-400">Change assumptions and the model updates instantly.</p>
             </div>
           </div>
+          <div className="mb-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Scenario presets</p>
+            <div className="mt-3 grid grid-cols-3 gap-2">
+              {scenarioPresets.map((preset) => (
+                <button
+                  key={preset.label}
+                  type="button"
+                  onClick={() => applyPreset(preset)}
+                  className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-2 text-xs font-semibold text-slate-200 hover:border-teal-300/40 hover:bg-teal-300/[0.08] focus:outline-none focus:ring-2 focus:ring-teal-300/40"
+                >
+                  {preset.label}
+                </button>
+              ))}
+            </div>
+          </div>
           <div className="space-y-6">
             <Field id="mrr" label="Starting MRR" value={startMrr} min={bounds.mrr.min} max={bounds.mrr.max} step={bounds.mrr.step} suffix="$" help="Your current monthly recurring subscription revenue." onChange={setStartMrr} />
             <Field id="growth" label="Monthly growth rate" value={growthRate} min={bounds.growth.min} max={bounds.growth.max} step={bounds.growth.step} suffix="%" help="New recurring revenue added each month as a percentage of starting MRR." onChange={setGrowthRate} />
@@ -246,10 +313,21 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
             <button type="button" onClick={copyCsv} className="inline-flex items-center gap-2 rounded-md bg-teal-300 px-3 py-2 text-sm font-semibold text-slate-950 hover:bg-teal-200">
               <Download size={16} /> Copy CSV
             </button>
+            <button type="button" onClick={saveScenario} className="inline-flex items-center gap-2 rounded-md border border-teal-300/30 px-3 py-2 text-sm font-semibold text-teal-100 hover:bg-teal-300/10">
+              <Save size={16} /> Compare another scenario
+            </button>
             <button type="button" onClick={reset} className="inline-flex items-center gap-2 rounded-md border border-white/15 px-3 py-2 text-sm font-semibold text-slate-100 hover:bg-white/10">
               <RefreshCw size={16} /> Reset
             </button>
           </div>
+          {savedScenario ? (
+            <div className="mt-4 rounded-md border border-white/10 bg-slate-950/45 p-3 text-sm leading-6 text-slate-300">
+              <p className="font-semibold text-white">Saved scenario</p>
+              <p>
+                {savedScenario.label}: {currency(savedScenario.finalMrr)} ending MRR from {currency(savedScenario.startMrr)} starting MRR, {savedScenario.growthRate.toFixed(1)}% growth, {savedScenario.churnRate.toFixed(1)}% churn, and {savedScenario.months} months.
+              </p>
+            </div>
+          ) : null}
           <p aria-live="polite" className="mt-4 min-h-5 text-sm text-teal-200">{statusMessage}</p>
         </div>
 
@@ -354,10 +432,16 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
           </p>
         </div>
         <div className="rounded-lg border border-white/10 bg-white/[0.04] p-5">
-          <h3 className="font-semibold text-white">Methodology Preview</h3>
-          <p className="mt-2 text-sm leading-6 text-slate-300">
-            Each month: ending MRR = starting MRR + growth MRR - churned MRR. Ending MRR becomes the next month starting MRR. <Link className="text-teal-300 hover:text-teal-200" href="/methodology">Read the methodology</Link>.
-          </p>
+          <details>
+            <summary className="cursor-pointer font-semibold text-white">Formula used in this forecast</summary>
+            <div className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
+              <p>Ending MRR = Starting MRR + New MRR - Churned MRR</p>
+              <p>New MRR = Starting MRR x Monthly Growth Rate</p>
+              <p>Churned MRR = Starting MRR x Monthly Churn Rate</p>
+              <p>ARR Run Rate = Ending MRR x 12</p>
+              <p><Link className="text-teal-300 hover:text-teal-200" href="/methodology">Read the methodology</Link>.</p>
+            </div>
+          </details>
         </div>
         <div className="rounded-lg border border-amber-300/20 bg-amber-300/10 p-5">
           <h3 className="font-semibold text-amber-100">Educational disclaimer</h3>
@@ -365,6 +449,24 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
             Aura Revenue provides educational SaaS forecasting estimates only. Results are based on the assumptions entered and should not be treated as financial, investment, tax, or legal advice.
           </p>
         </div>
+      </div>
+      <div className="mt-6 grid gap-4 lg:grid-cols-2">
+        <section className="rounded-lg border border-teal-300/20 bg-teal-300/[0.06] p-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-teal-300">Interpret this forecast</p>
+          <h3 className="mt-2 text-xl font-semibold text-white">{movementLabel}</h3>
+          <p className="mt-3 text-sm leading-6 text-slate-200">{interpretation}{longRangeNote}</p>
+        </section>
+        <section className="rounded-lg border border-white/10 bg-white/[0.04] p-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-400">Assumption quality check</p>
+          <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
+            {assumptionMessages.map((message) => (
+              <li key={message} className="flex gap-2">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-300" />
+                <span>{message}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
       </div>
     </section>
