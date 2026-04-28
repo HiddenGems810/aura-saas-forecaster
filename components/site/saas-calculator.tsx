@@ -296,7 +296,7 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
     setGrowthRate(bounds.growth.default);
     setChurnRate(bounds.churn.default);
     setMonths(bounds.months.default);
-    setStatusMessage('Inputs reset to default scenario.');
+    setStatusMessage('Calculator reset.');
     window.setTimeout(() => setStatusMessage(''), 2500);
   };
 
@@ -317,7 +317,7 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
       finalMrr,
       finalArr,
     });
-    setStatusMessage('Saved current scenario for comparison.');
+    setStatusMessage('Scenario saved.');
     window.setTimeout(() => setStatusMessage(''), 2500);
   };
 
@@ -371,7 +371,8 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
               Default scenario: $10,000 starting MRR, 8.5% growth, 2.1% churn, and 60 months.
             </p>
           ) : null}
-          <div className="mt-6 flex flex-wrap gap-3">
+          <p className="mt-6 text-sm leading-6 text-slate-400">Export or save this forecast for planning notes.</p>
+          <div className="mt-3 flex flex-wrap gap-3">
             <button type="button" onClick={downloadCsv} className="inline-flex items-center gap-2 rounded-md bg-teal-300 px-3 py-2 text-sm font-semibold text-slate-950 hover:bg-teal-200">
               <Download size={16} /> Download CSV
             </button>
@@ -379,12 +380,12 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
               <Clipboard size={16} /> Copy summary
             </button>
             <button type="button" onClick={shareScenario} className="inline-flex items-center gap-2 rounded-md border border-white/15 px-3 py-2 text-sm font-semibold text-slate-100 hover:bg-white/10">
-              <Share2 size={16} /> Share scenario
+              <Share2 size={16} /> Copy scenario link
             </button>
             <button type="button" onClick={saveScenario} className="inline-flex items-center gap-2 rounded-md border border-teal-300/30 px-3 py-2 text-sm font-semibold text-teal-100 hover:bg-teal-300/10">
               <Save size={16} /> Compare another scenario
             </button>
-            <button type="button" onClick={reset} className="inline-flex items-center gap-2 rounded-md border border-white/15 px-3 py-2 text-sm font-semibold text-slate-100 hover:bg-white/10">
+            <button type="button" onClick={reset} className="inline-flex items-center gap-2 rounded-md border border-white/10 px-3 py-2 text-sm font-semibold text-slate-400 hover:bg-white/[0.04] hover:text-slate-200">
               <RefreshCw size={16} /> Reset
             </button>
           </div>
