@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/next';
 import { CONTACT_EMAIL, SITE_NAME, SITE_URL } from '@/lib/site';
 import './globals.css';
 
