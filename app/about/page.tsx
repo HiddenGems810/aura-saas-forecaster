@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: 'About Aura Revenue',
   description: 'Learn what Aura Revenue does, who it helps, why the forecasting tool exists, and how to contact the publisher.',
   alternates: { canonical: '/about' },
+  openGraph: {
+    title: 'About Aura Revenue',
+    description: 'Learn what Aura Revenue does, who it helps, why the forecasting tool exists, and how to contact the publisher.',
+    url: '/about',
+  },
 };
 
 export default function AboutPage() {

@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: 'Example: Forecasting a SaaS Business Starting at $5K MRR',
   description: 'A practical twelve-month SaaS forecast example for a business starting at $5,000 MRR with growth and churn assumptions.',
   alternates: { canonical: '/examples/saas-forecast-5000-mrr' },
+  openGraph: {
+    title: 'Example: Forecasting a SaaS Business Starting at $5K MRR',
+    description: 'A practical twelve-month SaaS forecast example for a business starting at $5,000 MRR with growth and churn assumptions.',
+    url: '/examples/saas-forecast-5000-mrr',
+  },
 };
 
 const exampleRows = [

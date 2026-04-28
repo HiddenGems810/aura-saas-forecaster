@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Privacy Policy for Aura Revenue, including calculator inputs, analytics, cookies, advertising, AdSense, and contact information.',
   alternates: { canonical: '/privacy' },
+  openGraph: {
+    title: 'Privacy Policy | Aura Revenue',
+    description: 'Privacy Policy for Aura Revenue, including calculator inputs, analytics, cookies, and advertising.',
+    url: '/privacy',
+  },
 };
 
 export default function PrivacyPolicy() {

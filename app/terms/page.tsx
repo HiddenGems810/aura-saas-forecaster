@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'Terms of Service for Aura Revenue, including educational-use disclaimer, acceptable use, no financial advice, and limitation of liability.',
   alternates: { canonical: '/terms' },
+  openGraph: {
+    title: 'Terms of Service | Aura Revenue',
+    description: 'Terms of Service for Aura Revenue, including educational-use disclaimer, acceptable use, and no financial advice.',
+    url: '/terms',
+  },
 };
 
 export default function TermsOfService() {

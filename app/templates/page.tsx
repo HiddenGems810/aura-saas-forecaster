@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: 'SaaS Revenue Forecast Templates',
   description: 'Free SaaS revenue forecast templates for modeling MRR, new revenue, expansion, churned MRR, ending MRR, and ARR.',
   alternates: { canonical: '/templates' },
+  openGraph: {
+    title: 'SaaS Revenue Forecast Templates | Aura Revenue',
+    description: 'Free SaaS revenue forecast templates for modeling MRR, new revenue, expansion, churned MRR, and ARR.',
+    url: '/templates',
+  },
 };
 
 export default function TemplatesPage() {

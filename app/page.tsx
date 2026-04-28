@@ -16,7 +16,19 @@ import { PageShell } from '@/components/site/page-shell';
 import { SaasCalculator } from '@/components/site/saas-calculator';
 import { JsonLd } from '@/components/site/json-ld';
 import { getArticle, learnArticles } from '@/lib/articles';
-import { SITE_URL } from '@/lib/site';
+import { SITE_NAME, SITE_URL } from '@/lib/site';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Aura Revenue | SaaS MRR Forecasting Calculator',
+  description: 'Forecast SaaS MRR, churn, ARR, and long-term recurring revenue with Aura Revenue educational SaaS growth tools and explainers.',
+  openGraph: {
+    title: 'Aura Revenue | SaaS MRR Forecasting Calculator',
+    description: 'Forecast SaaS MRR, churn, ARR, and long-term recurring revenue with educational SaaS finance resources.',
+    url: '/',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'Aura Revenue SaaS MRR forecasting calculator dashboard' }],
+  },
+};
 
 const faq = [
   {

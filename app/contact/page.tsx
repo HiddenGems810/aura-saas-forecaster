@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: 'Contact Aura Revenue',
   description: 'Contact Aura Revenue for general questions, privacy requests, legal notices, corrections, and publisher inquiries.',
   alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact Aura Revenue',
+    description: 'Contact Aura Revenue for general questions, privacy requests, legal notices, corrections, and publisher inquiries.',
+    url: '/contact',
+  },
 };
 
 export default function ContactPage() {

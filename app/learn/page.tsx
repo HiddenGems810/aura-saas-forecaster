@@ -7,6 +7,11 @@ export const metadata: Metadata = {
   title: 'Learn SaaS MRR, ARR, Churn, and Forecasting',
   description: 'Educational guides for SaaS founders about MRR, ARR, churn, net revenue retention, benchmarks, and revenue forecasting.',
   alternates: { canonical: '/learn' },
+  openGraph: {
+    title: 'Learn SaaS MRR, ARR, Churn, and Forecasting',
+    description: 'Educational guides for SaaS founders about MRR, ARR, churn, net revenue retention, benchmarks, and revenue forecasting.',
+    url: '/learn',
+  },
 };
 
 export default function LearnPage() {

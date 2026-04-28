@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   title: 'Editorial Policy',
   description: 'Aura Revenue editorial policy for educational SaaS finance content, source handling, reviews, corrections, and disclaimers.',
   alternates: { canonical: '/editorial-policy' },
+  openGraph: {
+    title: 'Editorial Policy',
+    description: 'Aura Revenue editorial policy for educational SaaS finance content, source handling, reviews, corrections, and disclaimers.',
+    url: '/editorial-policy',
+  },
 };
 
 export default function EditorialPolicyPage() {
