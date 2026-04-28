@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { PageShell } from '@/components/site/page-shell';
 import { CONTACT_EMAIL } from '@/lib/site';
 
@@ -25,6 +26,7 @@ export default function EditorialPolicyPage() {
           <p>When benchmark or market claims are made, Aura Revenue uses source links to reputable references where practical. Benchmarks are framed as directional context, not guarantees or universal targets. If a claim is uncertain or varies by segment, the content should say so clearly.</p>
           <p>Content is periodically reviewed for accuracy, broken links, stale examples, and unclear assumptions. Corrections can be sent to <a className="text-teal-300 hover:text-teal-200" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
           <p>Aura Revenue content is educational only and is not financial, investment, tax, legal, or accounting advice. Users should consult qualified professionals before making important financial or legal decisions.</p>
+          <p>Learn more about the publisher on the <Link className="text-teal-300 hover:text-teal-200" href="/about">About page</Link>, or send corrections and questions through the <Link className="text-teal-300 hover:text-teal-200" href="/contact">Contact page</Link>.</p>
         </div>
       </main>
     </PageShell>

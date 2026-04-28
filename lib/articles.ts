@@ -390,6 +390,250 @@ const baseLearnArticles: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: 'saas-cac-payback',
+    title: 'SaaS CAC Payback: Formula and Forecasting Example',
+    description: 'Learn the CAC payback formula, how gross margin changes the calculation, and how founders can use payback periods in SaaS forecasts.',
+    updated: '2026-04-28',
+    related: ['saas-growth-model', 'saas-burn-multiple', 'rule-of-40-saas', 'what-is-mrr'],
+    sections: [
+      {
+        heading: 'What CAC Payback Measures',
+        body: [
+          'CAC payback estimates how long it takes a SaaS company to recover the sales and marketing cost required to acquire a customer. The metric is useful because growth can look healthy on an MRR chart while the cash required to create that growth is too heavy for the business model.',
+          'A short payback period means each acquired customer returns acquisition cost relatively quickly through gross profit. A long payback period means the company waits longer before the customer becomes economically useful. Neither number is automatically good or bad without context. Enterprise products can have longer sales cycles and larger contracts. Self-serve products may need faster payback because they have lower average revenue per account.',
+        ],
+      },
+      {
+        heading: 'CAC Payback Formula',
+        body: [
+          'A common formula is: CAC payback period in months = customer acquisition cost / monthly gross profit from that customer. If you calculate payback for a cohort, use total sales and marketing spend for the cohort divided by new customers acquired, then divide by monthly gross profit per account.',
+          'Gross margin matters. If a customer pays $500 per month and gross margin is 80%, monthly gross profit is $400. If acquisition cost is $2,400, payback is six months. If gross margin is only 50%, monthly gross profit is $250 and payback rises to 9.6 months. A revenue-only payback calculation can make the model look stronger than the cash economics really are.',
+        ],
+        bullets: [
+          'CAC = sales and marketing cost required to acquire customers.',
+          'Monthly gross profit = monthly recurring revenue x gross margin.',
+          'CAC payback months = CAC / monthly gross profit.',
+          'Use cohort data when possible instead of mixing old and new acquisition channels.',
+        ],
+      },
+      {
+        heading: 'Forecasting Example',
+        body: [
+          'Assume a bootstrapped SaaS company spends $6,000 in one month on content, outbound tools, and founder-led sales support. It acquires 20 customers at an average starting plan of $75 per month. Blended CAC is $300 per customer. If gross margin is 85%, monthly gross profit per customer is $63.75. CAC payback is about 4.7 months.',
+          'That example looks healthy, but the forecast still needs churn. If many of those customers churn before month five, the payback calculation overstates the value of the acquisition channel. If customers expand after activation, the payback can improve. This is why CAC payback should be reviewed next to churn, activation, expansion MRR, and cohort retention.',
+        ],
+      },
+      {
+        heading: 'Common Mistakes',
+        body: [
+          'The first mistake is using revenue instead of gross profit. Hosting, support, payment processing, infrastructure, and customer success costs affect how much subscription revenue actually contributes to recovering acquisition cost. The second mistake is averaging every customer together when channels behave differently. Paid search, affiliates, founder-led outbound, partnerships, and content can produce different conversion quality.',
+          'Another mistake is ignoring time. A company can have good payback on paper but still face cash pressure if annual prepayments, delayed invoices, or high upfront sales costs create a timing gap. For early-stage teams, CAC payback is a planning signal, not a substitute for a cash forecast.',
+        ],
+      },
+      {
+        heading: 'How to Use CAC Payback With Aura Revenue',
+        body: [
+          'Aura Revenue does not ask for CAC directly because the public calculator focuses on recurring revenue movement. Use it to test the revenue curve first, then use CAC payback to decide whether the acquisition assumptions behind that curve are economically realistic.',
+          'If your forecast assumes higher monthly growth, write down the acquisition cost required to create that growth and the payback period you expect. Then compare that with your churn assumptions. Growth that pays back slowly and churns quickly is fragile. Growth that pays back within a reasonable period and retains well is easier to fund and manage.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'gross-revenue-retention-vs-net-revenue-retention',
+    title: 'Gross Revenue Retention vs Net Revenue Retention',
+    description: 'Understand the difference between GRR and NRR, how to calculate each metric, and why SaaS operators need both retention views.',
+    updated: '2026-04-28',
+    related: ['net-revenue-retention', 'churn-rate', 'expansion-revenue', 'saas-growth-model'],
+    sections: [
+      {
+        heading: 'The Plain-English Difference',
+        body: [
+          'Gross revenue retention, or GRR, shows how much recurring revenue you keep from an existing customer cohort before counting expansion. Net revenue retention, or NRR, shows how much you keep after counting expansion, contraction, and churn. The difference matters because expansion can make a customer base look healthy even when some customers are downgrading or leaving.',
+          'GRR answers a defensive question: how much revenue did we keep without upsells? NRR answers a broader question: did the existing customer base grow or shrink after all account movement? A SaaS team should usually track both because each metric catches a different risk.',
+        ],
+      },
+      {
+        heading: 'Formulas',
+        body: [
+          'GRR = (starting MRR - contraction MRR - churned MRR) / starting MRR. NRR = (starting MRR + expansion MRR - contraction MRR - churned MRR) / starting MRR. Multiply either result by 100 to express it as a percentage.',
+          'Suppose a cohort starts with $100,000 in MRR. During the period, it expands by $12,000, contracts by $4,000, and churns $6,000. GRR is 90% because the cohort retained $90,000 before expansion. NRR is 102% because expansion raised retained revenue to $102,000 after all movement.',
+        ],
+        bullets: [
+          'GRR excludes expansion MRR.',
+          'NRR includes expansion MRR.',
+          'Both calculations should use the same starting cohort.',
+          'New customers acquired after the start date should not be included.',
+        ],
+      },
+      {
+        heading: 'Why Both Metrics Matter',
+        body: [
+          'A company with strong NRR and weak GRR may be expanding successful accounts while losing or shrinking others. That can still produce growth, but it can hide customer-fit problems. A company with strong GRR and modest NRR may retain customers well but lack natural expansion paths. That can be healthy for a simple product, but it limits growth from the installed base.',
+          'For planning, GRR helps you understand the leak in the base. NRR helps you understand whether expansion offsets that leak. If your forecast depends on high NRR, the team needs a credible expansion motion. If your forecast depends on high GRR, the team needs strong onboarding, support, product value, and renewal discipline.',
+        ],
+      },
+      {
+        heading: 'Common Mistakes',
+        body: [
+          'The most common mistake is calculating NRR with new customer revenue included. That turns retention into a growth metric and hides whether the original customer base retained value. Another mistake is treating NRR above 100% as proof that churn is no longer a problem. A company can have high NRR because a few large accounts expanded while many smaller accounts churned.',
+          'Segment the metrics when possible. Enterprise customers, small businesses, annual contracts, monthly subscriptions, and usage-based plans can produce different retention patterns. Blended NRR is useful for a top-level dashboard, but segment-level GRR and NRR help teams decide what to fix.',
+        ],
+      },
+      {
+        heading: 'Using GRR and NRR in a Forecast',
+        body: [
+          'In Aura Revenue, you can approximate retention quality by changing the churn input and growth input. For a more detailed spreadsheet, split churned MRR, contraction MRR, and expansion MRR into separate columns. That structure lets you calculate GRR and NRR each month from the same customer cohort.',
+          'Use GRR to pressure-test the downside case. Use NRR to test whether expansion can carry part of the growth plan. Both numbers should be treated as educational planning inputs, not guarantees of future revenue.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'saas-burn-multiple',
+    title: 'SaaS Burn Multiple: What Founders Should Track',
+    description: 'Learn what burn multiple means, how to calculate it, and how it connects revenue growth with cash efficiency in SaaS planning.',
+    updated: '2026-04-28',
+    related: ['saas-cac-payback', 'rule-of-40-saas', 'saas-growth-model', 'saas-benchmarks'],
+    sections: [
+      {
+        heading: 'What Burn Multiple Means',
+        body: [
+          'Burn multiple compares net cash burned with net new recurring revenue. It is a capital efficiency metric. A SaaS company can grow quickly and still be inefficient if it burns too much cash for each dollar of net new ARR. Burn multiple helps founders see whether growth is becoming more or less expensive.',
+          'The metric is most relevant for companies that are spending more cash than they generate. Bootstrapped companies can still use the concept, but they may focus more on operating cash flow, founder time, and payback periods because they are not raising outside capital to fund burn.',
+        ],
+      },
+      {
+        heading: 'Burn Multiple Formula',
+        body: [
+          'Burn multiple = net burn / net new ARR for the same period. If a company burns $300,000 in a quarter and adds $150,000 of net new ARR, burn multiple is 2.0. That means the company spent two dollars of net cash burn for each dollar of net new ARR.',
+          'Net burn should reflect cash used by the business during the period. Net new ARR should reflect the increase in annual recurring revenue run rate after churn, contraction, and expansion. Be consistent with timing. Mixing annualized revenue movement from one period with cash burn from another period will make the metric unreliable.',
+        ],
+        bullets: [
+          'Use net burn, not total expenses, when calculating burn multiple.',
+          'Use net new ARR, not gross bookings, for the revenue side.',
+          'Calculate the metric over a consistent period such as a quarter.',
+          'Interpret the number with stage, market, and growth strategy in mind.',
+        ],
+      },
+      {
+        heading: 'Example',
+        body: [
+          'Imagine a SaaS company starts the quarter at $800,000 ARR run rate and ends at $980,000 ARR run rate. Net new ARR is $180,000. During the same quarter, the company burns $270,000 in cash. Burn multiple is 1.5. If the company had burned $540,000 for the same ARR increase, burn multiple would be 3.0.',
+          'The second case is not automatically bad if the company is investing in a proven growth engine and has enough runway, but it demands explanation. Is the burn caused by temporary hiring, one-time costs, longer sales cycles, or inefficient acquisition? The metric should prompt a management conversation, not a simplistic pass-or-fail judgment.',
+        ],
+      },
+      {
+        heading: 'Common Mistakes',
+        body: [
+          'A common mistake is using gross new ARR instead of net new ARR. Gross new ARR ignores churn and contraction, so it can make growth efficiency look better than it is. Another mistake is comparing burn multiple across companies without context. A company with strong retention and large enterprise contracts may operate differently from a self-serve product in a crowded category.',
+          'Founders should also avoid optimizing burn multiple so aggressively that they starve the product or go-to-market motion. Efficiency matters, but underinvesting can slow learning, support, and retention. The right question is whether each dollar of burn is building durable recurring revenue.',
+        ],
+      },
+      {
+        heading: 'Connecting Burn Multiple to Forecasting',
+        body: [
+          'Aura Revenue models recurring revenue movement, not operating expenses. Use it to estimate net new MRR and ARR run rate under different growth and churn assumptions. Then compare that revenue movement with your expected cash burn in a separate model.',
+          'If improving churn creates more net new ARR than increasing acquisition spend, the business may have an efficiency opportunity. If growth requires higher burn and payback periods are long, the forecast should include runway pressure. Burn multiple is most useful when it connects the revenue curve to the cost of creating it.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'rule-of-40-saas',
+    title: 'Rule of 40 for SaaS: Simple Explanation',
+    description: 'Understand the SaaS Rule of 40, why it combines growth and profitability, and how early founders should use it carefully.',
+    updated: '2026-04-28',
+    related: ['saas-burn-multiple', 'saas-cac-payback', 'saas-benchmarks', 'saas-growth-model'],
+    sections: [
+      {
+        heading: 'What the Rule of 40 Says',
+        body: [
+          'The Rule of 40 is a shorthand SaaS metric that adds revenue growth rate and profit margin. If the total is 40 or higher, the business is often described as balancing growth and profitability well. For example, 30% annual growth plus 12% profit margin equals 42. A company growing 60% with a -20% margin also equals 40.',
+          'The rule is not a law and it is not a guarantee of valuation, funding, or business quality. It is a simple lens for thinking about tradeoffs. Faster growth can justify lower profitability for some companies. Slower growth usually requires stronger profitability or efficiency to look durable.',
+        ],
+      },
+      {
+        heading: 'Formula and Example',
+        body: [
+          'Rule of 40 score = annual recurring revenue growth rate + profit margin. Some teams use EBITDA margin, some use free cash flow margin, and some use operating margin. The chosen margin should be labeled clearly because different definitions can change the score.',
+          'Suppose a SaaS company grows ARR from $1,000,000 to $1,280,000 in a year. Annual ARR growth is 28%. If the company has a 6% operating margin, the Rule of 40 score is 34. If margin improves to 14% with the same growth, the score becomes 42. If growth rises to 38% while margin stays 6%, the score becomes 44.',
+        ],
+        bullets: [
+          'Use annual growth, not one strong month annualized without context.',
+          'Label the profit or cash-flow margin used in the calculation.',
+          'Do not treat the score as a substitute for retention, payback, or runway analysis.',
+          'Use the metric more cautiously for very early-stage companies.',
+        ],
+      },
+      {
+        heading: 'Why Early-Stage Founders Should Be Careful',
+        body: [
+          'The Rule of 40 can be noisy for small companies. A business growing from $2,000 MRR to $4,000 MRR has 100% growth, but the absolute dollars may still be too small to support payroll or paid acquisition. A founder-led company may show strong profitability because founder labor is underpaid or not counted fully.',
+          'Early teams should use the metric as a conversation starter. What growth rate is realistic? What margin is possible after paying for support, infrastructure, product development, and acquisition? Does retention support the growth rate? Does CAC payback allow the company to keep investing?',
+        ],
+      },
+      {
+        heading: 'Common Mistakes',
+        body: [
+          'The biggest mistake is optimizing for the Rule of 40 score while ignoring customer quality. A company can cut spending to improve margin, but if product quality, support, and retention suffer, the score may improve temporarily while long-term revenue gets weaker. Another mistake is using a one-month growth spike as if it represents annual growth.',
+          'Be consistent with the measurement period. If you use trailing twelve-month growth, pair it with trailing twelve-month margin. If you use forward-looking growth, label it as a forecast and show the assumptions. A clean definition is more trustworthy than a flattering score.',
+        ],
+      },
+      {
+        heading: 'Using the Rule With Aura Revenue',
+        body: [
+          'Aura Revenue can help you understand the growth side of the Rule of 40. Enter current MRR, growth, churn, and forecast period to see how ARR run rate changes. Then compare the resulting growth scenario with a separate view of expenses and margin.',
+          'Do not use a calculator output as a promise that the Rule of 40 will be reached. The output depends entirely on the assumptions entered. Treat it as an educational scenario, then validate growth, churn, pricing, and cost assumptions with real operating data.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'mrr-forecasting-bootstrapped-saas-founders',
+    title: 'MRR Forecasting for Bootstrapped SaaS Founders',
+    description: 'A practical guide to forecasting MRR, churn, runway pressure, and growth tradeoffs when a SaaS business is bootstrapped.',
+    updated: '2026-04-28',
+    related: ['what-is-mrr', 'saas-growth-model', 'saas-cac-payback', 'reduce-saas-churn'],
+    sections: [
+      {
+        heading: 'Why Bootstrapped Forecasts Are Different',
+        body: [
+          'Bootstrapped SaaS founders usually cannot hide weak economics behind repeated funding rounds. Forecasting has to connect recurring revenue, cash timing, founder capacity, support load, acquisition cost, and churn. A revenue curve that looks exciting but requires cash the business does not have is not a useful plan.',
+          'The advantage is discipline. A bootstrapped forecast can stay closer to customer reality because the business has to learn what customers will pay, how long they stay, and which acquisition channels can work without excessive spend. The goal is not to make the largest possible spreadsheet. The goal is to see the few assumptions that control survival and growth.',
+        ],
+      },
+      {
+        heading: 'Start With a Conservative Base Case',
+        body: [
+          'Begin with current MRR, not a hoped-for number. Use actual churn if you have it. If you do not have enough customers for stable churn data, use a cautious range and update it as cohorts mature. Growth should be tied to a real motion such as content, founder-led outbound, partnerships, product-led referrals, or paid acquisition with a clear budget limit.',
+          'For a bootstrapped founder, the base case should answer: can the business keep operating if growth is slower than expected and churn is slightly worse than expected? This is different from a pitch-deck forecast. It is a decision tool for hiring, spending, pricing, and product scope.',
+        ],
+      },
+      {
+        heading: 'Practical Example',
+        body: [
+          'Assume a founder starts at $6,000 MRR, grows 5% per month, and loses 2% to churn. Net movement is roughly positive 3% before details such as expansion and failed payments. In Aura Revenue, that scenario shows the shape of the recurring revenue curve. The founder can then test a second case with 7% growth and 2% churn, and a downside case with 3% growth and 4% churn.',
+          'The most useful output is not only month 12 MRR. It is the sensitivity. If a one-point churn increase removes months of progress, retention work may matter more than adding another acquisition tactic. If growth barely changes without paid spend, the founder needs to know whether CAC payback supports the experiment.',
+        ],
+      },
+      {
+        heading: 'Common Mistakes',
+        body: [
+          'Bootstrapped founders often undercount their own time. Founder-led sales, support, onboarding, and content can look free in a spreadsheet, but they create capacity limits. If the model assumes the founder can close, support, build, and write at the same time, the growth rate may not be operationally realistic.',
+          'Another mistake is ignoring plan mix. Ten customers at $20 per month behave differently from two customers at $100 per month, even if MRR is the same. Support load, churn behavior, payment failures, upgrade potential, and acquisition channels can vary by customer segment. A practical forecast eventually needs plan-level detail.',
+        ],
+      },
+      {
+        heading: 'A Simple Monthly Forecast Routine',
+        body: [
+          'At the end of each month, record starting MRR, new MRR, expansion MRR, contraction MRR, churned MRR, ending MRR, cash collected, refunds, failed payments, and major customer notes. Update the next three months with what you learned. Keep the long-range forecast, but do not let it distract from the next operating decision.',
+          'Use Aura Revenue for fast scenario checks and the spreadsheet template for detailed planning. The calculator is useful when you need to answer one question quickly. The template is better when hiring, pricing, or runway decisions depend on the detail.',
+        ],
+      },
+    ],
+  },
 ];
 
 const articleAdditions: Record<string, ArticleSection[]> = {
@@ -678,6 +922,156 @@ const articleAdditions: Record<string, ArticleSection[]> = {
         'Review expansion monthly by account size, plan, product usage, and customer age. Ask which accounts expanded, what trigger appeared before expansion, who owned the conversation, and whether the expansion created more durable usage. The best expansion motions teach the team where value grows inside customer accounts.',
         'Also review accounts that should have expanded but did not. They may have hit onboarding issues, internal rollout blockers, weak executive sponsorship, or unclear pricing. Missed expansion can reveal as much as successful upsells.',
         'Tie expansion back to the forecast. If expansion is a major part of future growth, the team needs a repeatable process, not a few lucky upgrades. Document eligibility rules, timing, expected conversion, and expected added MRR.',
+      ],
+    },
+  ],
+  'saas-cac-payback': [
+    {
+      heading: 'What to Include in Acquisition Cost',
+      body: [
+        'CAC is easiest to misuse when the cost side is too narrow. Paid media spend is only one part of acquisition cost. Depending on the business, sales compensation, marketing contractors, outbound software, content production, sponsorships, affiliate commissions, demo tools, and onboarding labor may all contribute to acquiring customers. A founder-led company should at least note founder time, even when it does not appear as payroll yet.',
+        'For a simple monthly review, separate direct channel spend from team and tool costs. Direct channel spend helps compare campaigns. Fully loaded acquisition cost helps evaluate whether the business model works. If a channel looks profitable only because labor is ignored, the forecast may break when the company hires someone to repeat the work.',
+      ],
+      bullets: [
+        'Keep paid media, sales labor, and marketing tools visible.',
+        'Separate one-time experiments from ongoing acquisition costs.',
+        'Review CAC by channel when volume is large enough.',
+        'Do not treat founder time as unlimited just because it is unpaid.',
+      ],
+    },
+    {
+      heading: 'Payback and Customer Quality',
+      body: [
+        'A low CAC payback period is not enough if customer quality is weak. A channel can produce cheap customers who churn quickly, never activate, or require heavy support. Another channel may have higher CAC but produce customers with stronger retention, faster expansion, and better referral potential. Payback is most useful when paired with retention and expansion data.',
+        'Track payback by cohort over time. Customers acquired in January may look similar at signup but behave differently after three or six months. If a cohort reaches payback and keeps expanding, the acquisition motion may deserve more investment. If a cohort fails to reach payback because churn arrives early, the team should inspect messaging, targeting, onboarding, and customer fit before spending more.',
+        'This is where forecasting becomes practical. The revenue curve tells you what happens if growth continues. CAC payback tells you whether the business can afford the growth engine behind that curve.',
+      ],
+    },
+    {
+      heading: 'A Monthly Review Workflow',
+      body: [
+        'Each month, compare planned acquisition spend with actual spend, planned new customers with actual new customers, and expected starting plan value with actual starting plan value. Then calculate payback for the month and compare it with the prior three months. A single month can be noisy, but repeated movement usually tells you whether a channel is improving or getting worse.',
+        'Add one qualitative note beside the number. For example: content customers activated faster, paid search customers asked for features outside the roadmap, or outbound customers had larger plans but longer sales cycles. Those notes help the team decide whether to scale, pause, or refine the acquisition motion.',
+      ],
+    },
+  ],
+  'gross-revenue-retention-vs-net-revenue-retention': [
+    {
+      heading: 'How to Build a Retention Bridge',
+      body: [
+        'A retention bridge starts with one cohort and explains how that cohort moved. Begin with starting MRR from customers active at the beginning of the period. Add expansion MRR from those same customers. Subtract contraction MRR and churned MRR from those same customers. The result is ending retained revenue for the cohort.',
+        'The bridge should not include new customers acquired during the period. New customers belong in total MRR growth, not retention. Keeping the boundary clean makes GRR and NRR more trustworthy. If a dashboard mixes new customer revenue into retention, leadership may miss a weakening customer base until acquisition slows.',
+      ],
+      bullets: [
+        'Choose a fixed starting customer cohort.',
+        'Record expansion, contraction, and churn separately.',
+        'Exclude new customers from retention metrics.',
+        'Use the same cohort period when comparing GRR and NRR.',
+      ],
+    },
+    {
+      heading: 'Management Questions to Ask',
+      body: [
+        'GRR and NRR should lead to decisions. If GRR falls, ask whether cancellations are concentrated in onboarding, renewal, plan fit, product gaps, customer segment, or payment failure. If NRR rises while GRR falls, ask whether expansion from a few accounts is masking broader customer dissatisfaction. If GRR is strong but NRR is flat, ask whether packaging, usage limits, seat expansion, or add-ons create enough natural expansion.',
+        'A useful retention review ends with owners. Product may own activation gaps. Customer success may own renewal risk. Marketing may own poor-fit acquisition. Finance or operations may own clean definitions. Without ownership, retention metrics become interesting numbers rather than operating tools.',
+        'Use the calculator to understand sensitivity, then use a cohort spreadsheet to diagnose the cause. The calculator can show how lower churn changes the forecast, but the operating data explains how to lower churn responsibly.',
+      ],
+    },
+    {
+      heading: 'Dashboard Placement',
+      body: [
+        'Place GRR and NRR near the top of a SaaS dashboard, but do not show them alone. Put them beside starting MRR, net new MRR, churned MRR, contraction MRR, expansion MRR, and customer count. This prevents a strong headline retention number from hiding the movement that created it.',
+        'For early teams, a monthly table is enough. Track the current month, trailing three months, and trailing twelve months when you have enough history. The goal is to create a stable operating view that can survive changes in pricing, packaging, acquisition channels, and customer mix.',
+      ],
+    },
+  ],
+  'saas-burn-multiple': [
+    {
+      heading: 'Burn Multiple and Runway',
+      body: [
+        'Burn multiple should be read beside runway. A company with twelve months of runway and a high burn multiple has less room to wait for efficiency improvements than a company with thirty months of runway. The same metric can require different decisions depending on cash balance, fundraising environment, growth quality, and renewal timing.',
+        'If burn multiple worsens, inspect both sides of the formula. Net burn may have increased because of hiring, experiments, infrastructure, or one-time costs. Net new ARR may have slowed because churn rose, expansion fell, sales cycles lengthened, or pipeline quality weakened. The fix depends on which side changed and whether the change is temporary or structural.',
+      ],
+      bullets: [
+        'Review burn multiple with cash runway.',
+        'Separate temporary costs from recurring burn.',
+        'Inspect churn and contraction when net new ARR slows.',
+        'Avoid cutting work that protects retention and product quality.',
+      ],
+    },
+    {
+      heading: 'How Bootstrapped Teams Can Use the Concept',
+      body: [
+        'A bootstrapped team may not report burn multiple to investors, but the underlying question still matters: how much cash and founder capacity does it take to add durable recurring revenue? If the business spends heavily on tools, contractors, ads, or support to add a small amount of MRR, the growth engine may be too expensive.',
+        'For small teams, a simpler review can work. Record monthly net cash change, net new MRR, churned MRR, and major growth expenses. If cash use rises while net new MRR weakens, pause and diagnose before scaling spend. If net new MRR improves while cash use stays controlled, the business may have found a more efficient motion.',
+        'The key is not to worship one metric. Burn multiple, CAC payback, churn, and MRR growth should tell a consistent story about whether the company is turning effort and cash into durable revenue.',
+      ],
+    },
+    {
+      heading: 'When the Metric Breaks Down',
+      body: [
+        'Burn multiple can break down when net new ARR is very small, negative, or distorted by one unusually large contract. If net new ARR is close to zero, the multiple can look extreme and may not be useful as a standalone score. In those cases, inspect the underlying revenue bridge and cash movement directly.',
+        'The metric can also look temporarily worse during upfront investments that have delayed payoff, such as hiring sales capacity, rebuilding onboarding, or launching a new market. Label those investments clearly and check whether leading indicators improve. If leading indicators do not improve, the worse burn multiple is a warning rather than a temporary artifact.',
+      ],
+    },
+  ],
+  'rule-of-40-saas': [
+    {
+      heading: 'Choosing the Right Margin',
+      body: [
+        'The Rule of 40 changes depending on which margin you use. EBITDA margin, operating margin, and free cash flow margin can tell different stories. EBITDA may exclude some non-cash costs. Operating margin may show the cost of running the business more directly. Free cash flow margin can reveal cash timing, collections, and capital needs. The best choice depends on the audience and the company stage.',
+        'For public-company comparison, analysts often use standardized definitions. For internal planning, consistency matters more than picking the most flattering margin. If you use operating margin this quarter and free cash flow margin next quarter, the trend may be misleading. Label the definition every time.',
+      ],
+      bullets: [
+        'Pick one margin definition for internal tracking.',
+        'Do not mix forecast growth with historical margin without labeling it.',
+        'Separate one-time costs from ongoing margin when explaining changes.',
+        'Use retention and payback metrics to interpret the score.',
+      ],
+    },
+    {
+      heading: 'Rule of 40 as a Planning Conversation',
+      body: [
+        'The best use of the Rule of 40 is not to chase a headline score. It is to ask whether the company has a coherent balance between growth and efficiency. If growth is high and margin is deeply negative, what evidence shows the growth is durable? If margin is strong and growth is low, is the company underinvesting or serving a mature niche responsibly?',
+        'For small SaaS businesses, the score can help compare scenarios. A founder might model 20% annual growth with 20% margin, then compare it with 35% growth and 5% margin. The better choice depends on cash needs, market timing, retention quality, product roadmap, and founder goals.',
+        'Aura Revenue can support that discussion by showing how MRR assumptions turn into ARR run rate. The margin side still needs a separate expense and cash model.',
+      ],
+    },
+    {
+      heading: 'What to Track Alongside It',
+      body: [
+        'Track the Rule of 40 beside retention, CAC payback, burn multiple, gross margin, and runway. A high score with weak retention may not be durable. A lower score with excellent retention and improving payback may be healthier than it looks. The surrounding metrics explain whether the growth and margin balance is built on strong customer economics.',
+        'Also review absolute revenue scale. A very small company can produce unusual percentage growth that makes the score look impressive. Larger companies usually need more discipline because each percentage point represents more dollars, more customers, and more operational complexity.',
+      ],
+    },
+  ],
+  'mrr-forecasting-bootstrapped-saas-founders': [
+    {
+      heading: 'Forecast Founder Capacity',
+      body: [
+        'A bootstrapped forecast should include capacity even if the calculator does not model it directly. Founder-led sales, onboarding, support, content, product development, and operations all compete for time. A model that assumes faster growth may also assume more demos, more onboarding calls, more support tickets, and more product requests.',
+        'Write capacity notes beside the growth assumption. If growth depends on publishing four high-quality guides per month, doing ten demos per week, and shipping onboarding improvements, ask whether that work fits the same calendar. If it does not, the forecast needs either a lower growth assumption, a narrower strategy, automation, or help from contractors or employees.',
+      ],
+      bullets: [
+        'List the work required to create new MRR.',
+        'Estimate support and onboarding load from new customers.',
+        'Keep founder time visible even when it is not a cash expense.',
+        'Adjust the forecast when capacity becomes the bottleneck.',
+      ],
+    },
+    {
+      heading: 'Deciding What to Improve First',
+      body: [
+        'When resources are limited, the forecast can help choose the next improvement. If churn sensitivity is high, activation and retention may deserve priority before adding acquisition spend. If growth is too slow but churn is stable, distribution and conversion may matter more. If customers retain but never expand, packaging or pricing may be the constraint.',
+        'Use one change at a time when possible. Test a clearer onboarding path, a pricing adjustment, a new acquisition channel, or a retention email sequence, then watch the metric it should affect. Forecasting becomes more accurate when assumptions are tied to specific experiments and updated with actual results.',
+        'A bootstrapped forecast should stay honest. It can be ambitious, but it should never hide the operational work required to reach the curve.',
+      ],
+    },
+    {
+      heading: 'Use Ranges Instead of One Perfect Line',
+      body: [
+        'A bootstrapped founder should keep at least three forecast lines: survival, base, and upside. The survival case assumes slower growth, higher churn, and no heroic capacity increase. The base case reflects what the current business can plausibly execute. The upside case shows what happens if a specific improvement works, such as better activation, a stronger channel, or a pricing change.',
+        'Ranges make decisions calmer. If the business survives the conservative case, the founder can invest with more confidence. If the business only works in the upside case, the next action should be proving the assumption quickly rather than treating the optimistic curve as the plan.',
       ],
     },
   ],

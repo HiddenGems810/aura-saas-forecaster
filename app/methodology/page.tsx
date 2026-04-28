@@ -61,7 +61,12 @@ export default function MethodologyPage() {
             <section>
               <h2 className="text-2xl font-semibold text-white">Limitations</h2>
               <p className="mt-4">There is no guarantee of future revenue. Forecast accuracy depends on the quality of the assumptions entered. Actual performance can differ because of product changes, competitive pressure, pricing changes, market demand, macroeconomic conditions, customer behavior, and execution.</p>
+              <p className="mt-4">Aura Revenue provides educational forecasting tools and examples only. Outputs are estimates based on user-provided assumptions and should not be treated as financial, legal, tax, accounting, or investment advice.</p>
               <p className="mt-4">The methodology is related to concepts explained in the guides on <Link className="text-teal-300 hover:text-teal-200" href="/learn/what-is-mrr">MRR</Link>, <Link className="text-teal-300 hover:text-teal-200" href="/learn/churn-rate">churn</Link>, <Link className="text-teal-300 hover:text-teal-200" href="/learn/net-revenue-retention">net revenue retention</Link>, and <Link className="text-teal-300 hover:text-teal-200" href="/learn/saas-growth-model">SaaS revenue forecasting</Link>.</p>
+            </section>
+            <section>
+              <h2 className="text-2xl font-semibold text-white">Formula-heavy guides</h2>
+              <p className="mt-4">For more context on the formulas behind the model, read the guides on <Link className="text-teal-300 hover:text-teal-200" href="/learn/mrr-vs-arr">MRR vs ARR</Link>, <Link className="text-teal-300 hover:text-teal-200" href="/learn/gross-revenue-retention-vs-net-revenue-retention">gross revenue retention vs net revenue retention</Link>, <Link className="text-teal-300 hover:text-teal-200" href="/learn/saas-cac-payback">CAC payback</Link>, <Link className="text-teal-300 hover:text-teal-200" href="/learn/saas-burn-multiple">burn multiple</Link>, and <Link className="text-teal-300 hover:text-teal-200" href="/learn/rule-of-40-saas">Rule of 40</Link>.</p>
             </section>
             <section>
               <h2 className="text-2xl font-semibold text-white">Update History</h2>

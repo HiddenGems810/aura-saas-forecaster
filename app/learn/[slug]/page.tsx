@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { AdPlaceholder } from '@/components/site/ad-placeholder';
+import { AuthorReviewBlock } from '@/components/site/author-review-block';
 import { JsonLd } from '@/components/site/json-ld';
 import { PageShell } from '@/components/site/page-shell';
 import { getArticle, learnArticles } from '@/lib/articles';
@@ -63,9 +65,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             <span className="hidden sm:inline">|</span>
             <span>Category: SaaS Finance Education</span>
           </div>
+          <AuthorReviewBlock />
 
           <div className="mt-10 space-y-10">
-            {article.sections.map((section) => (
+            {article.sections.map((section, index) => (
               <section key={section.heading}>
                 <h2 className="text-2xl font-semibold tracking-tight text-white">{section.heading}</h2>
                 <div className="mt-4 space-y-4 text-base leading-8 text-slate-300">
@@ -76,6 +79,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                     </ul>
                   ) : null}
                 </div>
+                {index === 2 ? <AdPlaceholder position="article-mid" /> : null}
               </section>
             ))}
           </div>
@@ -100,6 +104,15 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </section>
           ) : null}
 
+          <section className="mt-10 rounded-lg border border-amber-300/20 bg-amber-300/[0.08] p-5">
+            <h2 className="text-xl font-semibold text-amber-100">Important disclaimer</h2>
+            <p className="mt-2 text-sm leading-6 text-amber-50/90">
+              Aura Revenue provides educational forecasting tools and examples only. Outputs are estimates based on user-provided assumptions and should not be treated as financial, legal, tax, accounting, or investment advice.
+            </p>
+          </section>
+
+          <AdPlaceholder position="article-before-related" />
+
           <section className="mt-10 border-t border-white/10 pt-8">
             <h2 className="text-2xl font-semibold text-white">Related Guides</h2>
             <div className="mt-4 grid gap-3">
@@ -113,6 +126,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               </Link>
             </div>
           </section>
+          <AdPlaceholder position="article-bottom" />
         </article>
       </main>
     </PageShell>

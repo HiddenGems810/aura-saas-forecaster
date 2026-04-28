@@ -12,11 +12,11 @@ import {
   Table2,
   TrendingDown,
 } from 'lucide-react';
+import { AdPlaceholder } from '@/components/site/ad-placeholder';
 import { PageShell } from '@/components/site/page-shell';
 import { SaasCalculator } from '@/components/site/saas-calculator';
-import { JsonLd } from '@/components/site/json-ld';
 import { getArticle, learnArticles } from '@/lib/articles';
-import { SITE_NAME, SITE_URL } from '@/lib/site';
+import { SITE_URL } from '@/lib/site';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -124,21 +124,20 @@ const guideIcons = [LineChart, Calendar, TrendingDown, CircleDollarSign, BarChar
 
 export default function Home() {
   const featured = getArticle('what-is-mrr') ?? learnArticles[0];
-  const remainingGuides = learnArticles.filter((article) => article.slug !== featured.slug).slice(0, 6);
+  const featuredGuideSlugs = [
+    'churn-rate',
+    'saas-growth-model',
+    'saas-cac-payback',
+    'gross-revenue-retention-vs-net-revenue-retention',
+    'saas-burn-multiple',
+    'mrr-forecasting-bootstrapped-saas-founders',
+  ];
+  const remainingGuides = featuredGuideSlugs
+    .map(getArticle)
+    .filter((article): article is NonNullable<typeof article> => Boolean(article));
 
   return (
     <PageShell>
-      <JsonLd
-        data={{
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: faq.map((item) => ({
-            '@type': 'Question',
-            name: item.q,
-            acceptedAnswer: { '@type': 'Answer', text: item.a },
-          })),
-        }}
-      />
       <main>
         <section className="mx-auto grid max-w-7xl gap-12 px-5 pb-20 pt-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pb-28 lg:pt-24">
           <div>
@@ -185,6 +184,10 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <AdPlaceholder position="home-after-intro" />
+        </div>
 
         <section className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
           <div className="mb-8">

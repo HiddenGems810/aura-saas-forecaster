@@ -28,7 +28,7 @@ export default function TermsOfService() {
           </section>
           <section>
             <h2 className="text-2xl font-semibold text-white">No Financial, Tax, Legal, or Investment Advice</h2>
-            <p className="mt-4">Aura Revenue content and calculator outputs are not financial advice, investment advice, tax advice, accounting advice, or legal advice. You are responsible for evaluating assumptions and consulting qualified professionals before making important business, financial, tax, or legal decisions.</p>
+            <p className="mt-4">Aura Revenue provides educational forecasting tools and examples only. Outputs are estimates based on user-provided assumptions and should not be treated as financial, legal, tax, accounting, or investment advice. You are responsible for evaluating assumptions and consulting qualified professionals before making important business, financial, tax, accounting, or legal decisions.</p>
           </section>
           <section>
             <h2 className="text-2xl font-semibold text-white">Acceptable Use</h2>

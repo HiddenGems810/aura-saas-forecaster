@@ -35,8 +35,10 @@ export default function PrivacyPolicy() {
             <p className="mt-4">We may use hosting logs and analytics tools to understand site performance, pages visited, device type, browser type, referring pages, approximate region, and aggregate usage patterns. These tools may use cookies or similar technologies. You can control cookies through your browser settings.</p>
           </section>
           <section>
-            <h2 className="text-2xl font-semibold text-white">Advertising and Google AdSense</h2>
-            <p className="mt-4">Aura Revenue may display advertising through Google AdSense. Google and its partners may use cookies to serve and measure ads, including personalized ads where permitted. You can learn more from <a className="text-teal-300 hover:text-teal-200" href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google advertising policies</a> and manage ad personalization through Google account settings.</p>
+            <h2 className="text-2xl font-semibold text-white">Third-Party Advertising and Cookies</h2>
+            <p className="mt-4">Aura Revenue may display advertising through third-party advertising services, including Google AdSense. Third-party vendors, including Google, may use cookies, web beacons, IP addresses, device identifiers, and similar technologies when ads or measurement tools are served on this site.</p>
+            <p className="mt-4">These technologies may be used to serve ads based on a user&apos;s prior visits to Aura Revenue or other websites, measure ad performance, prevent fraud and abuse, and understand aggregate ad delivery. Third parties may collect or receive information from this site and elsewhere on the internet and use that information to provide measurement services and targeted ads.</p>
+            <p className="mt-4">You can manage or opt out of personalized advertising through <a className="text-teal-300 hover:text-teal-200" href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">Google Ad Settings</a>, browser cookie controls, and device privacy settings. You can also learn how Google uses data from partner sites and apps at <a className="text-teal-300 hover:text-teal-200" href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Google&apos;s partner sites and apps explanation</a>.</p>
           </section>
           <section>
             <h2 className="text-2xl font-semibold text-white">How Information Is Used</h2>
@@ -55,6 +57,7 @@ export default function PrivacyPolicy() {
         <div className="mt-10 flex gap-4 border-t border-white/10 pt-6 text-sm">
           <Link className="text-teal-300 hover:text-teal-200" href="/terms">Terms of Service</Link>
           <Link className="text-teal-300 hover:text-teal-200" href="/contact">Contact</Link>
+          <Link className="text-teal-300 hover:text-teal-200" href="/editorial-policy">Editorial Policy</Link>
         </div>
       </main>
     </PageShell>

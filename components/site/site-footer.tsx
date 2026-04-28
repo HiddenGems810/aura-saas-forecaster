@@ -13,8 +13,8 @@ const learnLinks = [
   { href: '/learn', label: 'All Guides' },
   { href: '/learn/what-is-mrr', label: 'What Is MRR?' },
   { href: '/learn/churn-rate', label: 'Churn Rate' },
-  { href: '/learn/net-revenue-retention', label: 'Net Revenue Retention' },
-  { href: '/learn/saas-benchmarks', label: 'SaaS Benchmarks' },
+  { href: '/learn/saas-cac-payback', label: 'CAC Payback' },
+  { href: '/learn/gross-revenue-retention-vs-net-revenue-retention', label: 'GRR vs NRR' },
 ];
 
 const companyLinks = [
