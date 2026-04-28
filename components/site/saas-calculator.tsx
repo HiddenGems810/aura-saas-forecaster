@@ -1,8 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { BarChart3, Calculator, Download, Percent, RefreshCw, Save, Sigma, TrendingUp } from 'lucide-react';
+import { BarChart3, Calculator, Clipboard, Download, Percent, RefreshCw, Save, Share2, Sigma, TrendingUp } from 'lucide-react';
 import { useForecaster } from '@/hooks/use-forecaster';
 
 const bounds = {
@@ -19,7 +19,7 @@ const scenarioPresets = [
 ];
 
 function parseParam(params: URLSearchParams, key: keyof typeof bounds) {
-  const raw = params.get(key);
+  const raw = params.get(key) ?? (key === 'months' ? params.get('period') : null);
   const config = bounds[key];
   if (!raw || !/^\d+(\.\d+)?$/.test(raw)) return config.default;
   const parsed = Number(raw);
@@ -35,6 +35,16 @@ function currency(value: number) {
     currency: 'USD',
     maximumFractionDigits: 0,
   }).format(Math.max(0, value));
+}
+
+function signedCurrency(value: number) {
+  if (!Number.isFinite(value)) return '$0';
+  const formatted = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(Math.abs(value));
+  return value > 0 ? `+${formatted}` : value < 0 ? `-${formatted}` : formatted;
 }
 
 function compactCurrency(value: number) {
@@ -169,6 +179,7 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
     churnRate: number;
     months: number;
     finalMrr: number;
+    finalArr: number;
   } | null>(null);
 
   useEffect(() => {
@@ -176,7 +187,7 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
     params.set('mrr', String(startMrr));
     params.set('growth', String(growthRate));
     params.set('churn', String(churnRate));
-    params.set('months', String(months));
+    params.set('period', String(months));
     window.history.replaceState(null, '', `${window.location.pathname}?${params.toString()}`);
   }, [startMrr, growthRate, churnRate, months]);
 
@@ -206,14 +217,25 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
     growthRate > 20 ? 'Very high monthly growth may be difficult to sustain for long periods.' : '',
     months > 36 ? 'Long-range forecasts are more sensitive to small assumption changes.' : '',
   ].filter(Boolean);
+  const chartSummary = `Chart summary: In this scenario, MRR grows from ${currency(startMrr)} in month 1 to ${currency(finalMrr)} by month ${months}.`;
+  const scenarioDifference = savedScenario ? finalMrr - savedScenario.finalMrr : 0;
 
   const rows = useMemo(() => {
     const step = months <= 24 ? 1 : 12;
     return projection.filter((row) => row.month === 1 || row.month % step === 0 || row.month === months);
   }, [months, projection]);
 
-  const copyCsv = useCallback(() => {
-    const header = 'Month,Starting MRR,New MRR,Churned MRR,Ending MRR,ARR,Cumulative Revenue';
+  const downloadCsv = () => {
+    const metadata = [
+      'Aura Revenue SaaS MRR Forecast',
+      `Starting MRR,${Math.round(startMrr)}`,
+      `Monthly Growth Rate,${growthRate.toFixed(1)}%`,
+      `Monthly Churn Rate,${churnRate.toFixed(1)}%`,
+      `Forecast Period,${months} months`,
+      'Educational use only,Not financial advice',
+      '',
+    ];
+    const header = 'Month,Starting MRR,New MRR,Churned MRR,Ending MRR,ARR';
     const csv = projection
       .map((row) => [
         row.month,
@@ -222,13 +244,52 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
         Math.round(row.churnedMrr),
         Math.round(row.revenue),
         Math.round(row.arr),
-        Math.round(row.cumulativeTotal),
       ].join(','))
       .join('\n');
-    navigator.clipboard.writeText(`${header}\n${csv}`);
-    setStatusMessage('Copied forecast CSV to clipboard.');
+    const blob = new Blob([[...metadata, header, csv].join('\n')], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `aura-revenue-mrr-forecast-${months}-months.csv`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    setStatusMessage('CSV downloaded.');
     window.setTimeout(() => setStatusMessage(''), 2500);
-  }, [projection]);
+  };
+
+  const copySummary = () => {
+    const summary = [
+      'Aura Revenue Forecast Summary',
+      '',
+      `Starting MRR: ${currency(startMrr)}`,
+      `Monthly growth rate: ${growthRate.toFixed(1)}%`,
+      `Monthly churn rate: ${churnRate.toFixed(1)}%`,
+      `Forecast period: ${months} months`,
+      '',
+      `Projected Month ${months} MRR: ${currency(finalMrr)}`,
+      `ARR run rate: ${currency(finalArr)}`,
+      `Net monthly rate: ${netMonthlyRate.toFixed(1)}%`,
+      '',
+      'Educational estimate only. Not financial, tax, accounting, legal, or investment advice.',
+    ].join('\n');
+    navigator.clipboard.writeText(summary);
+    setStatusMessage('Forecast summary copied.');
+    window.setTimeout(() => setStatusMessage(''), 2500);
+  };
+
+  const shareScenario = () => {
+    const params = new URLSearchParams();
+    params.set('mrr', String(startMrr));
+    params.set('growth', String(growthRate));
+    params.set('churn', String(churnRate));
+    params.set('period', String(months));
+    const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+    navigator.clipboard.writeText(url);
+    setStatusMessage('Scenario link copied.');
+    window.setTimeout(() => setStatusMessage(''), 2500);
+  };
 
   const reset = () => {
     setStartMrr(bounds.mrr.default);
@@ -254,6 +315,7 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
       churnRate,
       months,
       finalMrr,
+      finalArr,
     });
     setStatusMessage('Saved current scenario for comparison.');
     window.setTimeout(() => setStatusMessage(''), 2500);
@@ -310,8 +372,14 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
             </p>
           ) : null}
           <div className="mt-6 flex flex-wrap gap-3">
-            <button type="button" onClick={copyCsv} className="inline-flex items-center gap-2 rounded-md bg-teal-300 px-3 py-2 text-sm font-semibold text-slate-950 hover:bg-teal-200">
-              <Download size={16} /> Copy CSV
+            <button type="button" onClick={downloadCsv} className="inline-flex items-center gap-2 rounded-md bg-teal-300 px-3 py-2 text-sm font-semibold text-slate-950 hover:bg-teal-200">
+              <Download size={16} /> Download CSV
+            </button>
+            <button type="button" onClick={copySummary} className="inline-flex items-center gap-2 rounded-md border border-white/15 px-3 py-2 text-sm font-semibold text-slate-100 hover:bg-white/10">
+              <Clipboard size={16} /> Copy summary
+            </button>
+            <button type="button" onClick={shareScenario} className="inline-flex items-center gap-2 rounded-md border border-white/15 px-3 py-2 text-sm font-semibold text-slate-100 hover:bg-white/10">
+              <Share2 size={16} /> Share scenario
             </button>
             <button type="button" onClick={saveScenario} className="inline-flex items-center gap-2 rounded-md border border-teal-300/30 px-3 py-2 text-sm font-semibold text-teal-100 hover:bg-teal-300/10">
               <Save size={16} /> Compare another scenario
@@ -320,14 +388,6 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
               <RefreshCw size={16} /> Reset
             </button>
           </div>
-          {savedScenario ? (
-            <div className="mt-4 rounded-md border border-white/10 bg-slate-950/45 p-3 text-sm leading-6 text-slate-300">
-              <p className="font-semibold text-white">Saved scenario</p>
-              <p>
-                {savedScenario.label}: {currency(savedScenario.finalMrr)} ending MRR from {currency(savedScenario.startMrr)} starting MRR, {savedScenario.growthRate.toFixed(1)}% growth, {savedScenario.churnRate.toFixed(1)}% churn, and {savedScenario.months} months.
-              </p>
-            </div>
-          ) : null}
           <p aria-live="polite" className="mt-4 min-h-5 text-sm text-teal-200">{statusMessage}</p>
         </div>
 
@@ -367,9 +427,53 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
             </div>
           </div>
 
+          {savedScenario ? (
+            <section className="mt-6 rounded-lg border border-teal-300/20 bg-teal-300/[0.06] p-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-teal-300">Scenario comparison</p>
+              <div className="mt-4 grid gap-4 sm:grid-cols-3">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.12em] text-slate-500">Current scenario</p>
+                  <p className="mt-2 text-lg font-semibold text-white">{currency(finalMrr)}</p>
+                  <p className="text-sm text-slate-400">ARR run rate: {currency(finalArr)}</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.12em] text-slate-500">Saved scenario</p>
+                  <p className="mt-2 text-lg font-semibold text-white">{currency(savedScenario.finalMrr)}</p>
+                  <p className="text-sm text-slate-400">ARR run rate: {currency(savedScenario.finalArr)}</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.12em] text-slate-500">Difference</p>
+                  <p className={`mt-2 text-lg font-semibold ${scenarioDifference >= 0 ? 'text-teal-200' : 'text-rose-200'}`}>
+                    {signedCurrency(scenarioDifference)} MRR
+                  </p>
+                  <p className="text-sm text-slate-400">Current minus saved</p>
+                </div>
+              </div>
+            </section>
+          ) : null}
+
+          <section className="mt-6 rounded-lg border border-teal-300/20 bg-teal-300/[0.06] p-5">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-teal-300">Interpret this forecast</p>
+            <h3 className="mt-2 text-xl font-semibold text-white">{movementLabel}</h3>
+            <p className="mt-3 text-sm leading-6 text-slate-200">{interpretation}{longRangeNote}</p>
+          </section>
+
+          <section className="mt-6 rounded-lg border border-white/10 bg-white/[0.04] p-5">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-400">Assumption quality check</p>
+            <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
+              {assumptionMessages.map((message) => (
+                <li key={message} className="flex gap-2">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-300" />
+                  <span>{message}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
           <div className="mt-6 h-[300px] rounded-lg border border-white/10 bg-slate-950/40 p-4">
             <ForecastChart data={projection} />
           </div>
+          <p className="mt-3 text-sm leading-6 text-slate-400">{chartSummary}</p>
 
           <div className="mt-6 hidden overflow-x-auto rounded-lg border border-white/10 md:block">
             <table className="min-w-full divide-y divide-white/10 text-sm">
@@ -432,10 +536,11 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
           </p>
         </div>
         <div className="rounded-lg border border-white/10 bg-white/[0.04] p-5">
-          <details>
-            <summary className="cursor-pointer font-semibold text-white">Formula used in this forecast</summary>
+          <h3 className="font-semibold text-white">Formula used in this forecast</h3>
+          <p className="mt-2 text-sm leading-6 text-slate-300">Ending MRR = Starting MRR + New MRR - Churned MRR</p>
+          <details className="mt-2">
+            <summary className="cursor-pointer text-sm font-semibold text-teal-300">View formula details</summary>
             <div className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
-              <p>Ending MRR = Starting MRR + New MRR - Churned MRR</p>
               <p>New MRR = Starting MRR x Monthly Growth Rate</p>
               <p>Churned MRR = Starting MRR x Monthly Churn Rate</p>
               <p>ARR Run Rate = Ending MRR x 12</p>
@@ -449,24 +554,6 @@ export function SaasCalculator({ showIntro = false }: { showIntro?: boolean }) {
             Aura Revenue provides educational SaaS forecasting estimates only. Results are based on the assumptions entered and should not be treated as financial, investment, tax, or legal advice.
           </p>
         </div>
-      </div>
-      <div className="mt-6 grid gap-4 lg:grid-cols-2">
-        <section className="rounded-lg border border-teal-300/20 bg-teal-300/[0.06] p-5">
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-teal-300">Interpret this forecast</p>
-          <h3 className="mt-2 text-xl font-semibold text-white">{movementLabel}</h3>
-          <p className="mt-3 text-sm leading-6 text-slate-200">{interpretation}{longRangeNote}</p>
-        </section>
-        <section className="rounded-lg border border-white/10 bg-white/[0.04] p-5">
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-400">Assumption quality check</p>
-          <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
-            {assumptionMessages.map((message) => (
-              <li key={message} className="flex gap-2">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-300" />
-                <span>{message}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
       </div>
       </div>
     </section>

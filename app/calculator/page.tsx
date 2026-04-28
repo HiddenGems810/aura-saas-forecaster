@@ -104,8 +104,8 @@ export default function CalculatorPage() {
         <section className="mt-10 max-w-4xl">
           <h2 className="text-2xl font-semibold text-white">Calculator FAQ</h2>
           <div className="mt-4 space-y-3">
-            {faqs.map(([question, answer]) => (
-              <details key={question} className="rounded-lg border border-white/10 bg-white/[0.04] p-5">
+            {faqs.map(([question, answer], index) => (
+              <details key={question} open={index === 0} className="rounded-lg border border-white/10 bg-white/[0.04] p-5">
                 <summary className="cursor-pointer font-semibold text-white">{question}</summary>
                 <p className="mt-3 text-sm leading-6 text-slate-300">{answer}</p>
               </details>
