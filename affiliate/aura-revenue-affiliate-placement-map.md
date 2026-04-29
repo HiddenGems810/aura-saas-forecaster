@@ -38,7 +38,7 @@ Secondary disclosure added near recommendation sections where appropriate:
 - Leuchtturm1917 Medium A5 Notebook
 - Rocketbook Core Reusable Smart Notebook
 - Post-it Super Sticky Easel Pad
-- Quartet Glass Whiteboard
+- Quartet Infinity Magnetic Glass Whiteboard
 - Casio MS-80B Desktop Calculator
 - HP 12C Financial Calculator
 - Full Focus Planner
@@ -52,7 +52,7 @@ Secondary disclosure added near recommendation sections where appropriate:
 - Logitech MX Master 3S Wireless Mouse
 - Rain Design mStand Laptop Stand
 - Roost Laptop Stand
-- Anker USB-C Hub
+- Anker 555 USB-C Hub
 - BenQ ScreenBar Monitor Light
 - Logitech Brio 4K Webcam
 - Blue Yeti USB Microphone
@@ -143,7 +143,8 @@ Secondary disclosure added near recommendation sections where appropriate:
 
 ## Manual Pre-Go-Live Checks
 
-- Use Amazon Associates SiteStripe or approved link tools to replace exact-search tagged destinations with product-specific Special Links where desired.
+- Product links now use product-specific Amazon `/dp/{ASIN}` destinations with the `aurarevenue-20` tracking tag instead of generic search-result pages.
+- Use Amazon Associates SiteStripe or approved link tools to spot-check reporting behavior if desired.
 - Confirm every selected product is currently available and appropriate.
 - Verify rating, review count, Prime availability, and product page quality internally before promoting any recommendation in campaigns.
 - Do not add public ratings, review counts, or price claims unless they are served through Amazon-approved APIs and kept compliant.

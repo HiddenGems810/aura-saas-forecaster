@@ -14,10 +14,15 @@ export type AffiliateProduct = {
   consider: string;
   targetPages: string[];
   recommended: boolean;
+  amazonAsin?: string;
 };
 
 function amazonSearchUrl(query: string) {
   return `https://www.amazon.com/s?k=${encodeURIComponent(query)}&tag=${AMAZON_ASSOCIATE_TAG}`;
+}
+
+function amazonProductUrl(asin: string) {
+  return `https://www.amazon.com/dp/${asin}?tag=${AMAZON_ASSOCIATE_TAG}`;
 }
 
 export const affiliateProducts: AffiliateProduct[] = [
@@ -31,6 +36,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is broader than SaaS, so pair it with SaaS-specific metrics content.',
     targetPages: ['best-saas-finance-books', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: 'B01MY26IQ8',
   },
   {
     id: 'subscribed',
@@ -42,6 +48,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is strategy-heavy and less tactical than a spreadsheet or metrics workbook.',
     targetPages: ['best-saas-finance-books'],
     recommended: true,
+    amazonAsin: '0525536469',
   },
   {
     id: 'saas-playbook',
@@ -53,6 +60,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'Best fit for early-stage and bootstrapped teams, not enterprise finance teams.',
     targetPages: ['best-saas-finance-books', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: 'B0C87KHT1L',
   },
   {
     id: 'lean-analytics',
@@ -64,6 +72,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It covers multiple business models, so SaaS readers should focus on the recurring-revenue sections.',
     targetPages: ['best-saas-finance-books', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: '1449335675',
   },
   {
     id: 'traction',
@@ -75,6 +84,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is acquisition-focused, so it should be paired with retention and churn analysis.',
     targetPages: ['best-saas-finance-books'],
     recommended: true,
+    amazonAsin: '1591848369',
   },
   {
     id: 'monetizing-innovation',
@@ -86,6 +96,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is not SaaS-only, so translate the ideas into subscription packaging carefully.',
     targetPages: ['best-saas-finance-books', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: '1119240867',
   },
   {
     id: 'obviously-awesome',
@@ -97,6 +108,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is a positioning book, not a finance book, so use it as a strategy complement.',
     targetPages: ['best-saas-finance-books', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: '1999023005',
   },
   {
     id: 'financial-intelligence-entrepreneurs',
@@ -108,6 +120,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is broader business finance, not a SaaS metrics manual.',
     targetPages: ['best-saas-finance-books'],
     recommended: true,
+    amazonAsin: '1422119157',
   },
   {
     id: 'venture-deals',
@@ -119,6 +132,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is financing-focused and may be less relevant for founders who plan to stay fully bootstrapped.',
     targetPages: ['best-saas-finance-books'],
     recommended: true,
+    amazonAsin: '1119594820',
   },
   {
     id: 'mom-test',
@@ -130,6 +144,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is about customer research rather than metrics calculation.',
     targetPages: ['saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: '1492180742',
   },
   {
     id: 'moleskine-notebook',
@@ -141,6 +156,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is not structured; founders who want prompts may prefer a planner.',
     targetPages: ['startup-planning-tools', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: '8883701127',
   },
   {
     id: 'leuchtturm-notebook',
@@ -152,6 +168,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is still a blank notebook, so it requires a planning routine.',
     targetPages: ['startup-planning-tools'],
     recommended: true,
+    amazonAsin: 'B002TSIMW4',
   },
   {
     id: 'rocketbook-core',
@@ -163,6 +180,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It depends on using compatible pens and a scanning workflow.',
     targetPages: ['startup-planning-tools'],
     recommended: true,
+    amazonAsin: 'B07WFVWZG5',
   },
   {
     id: 'post-it-easel-pad',
@@ -174,10 +192,11 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It needs wall space and is less useful for purely digital workflows.',
     targetPages: ['startup-planning-tools', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: 'B00006IA9F',
   },
   {
     id: 'quartet-whiteboard',
-    name: 'Quartet Glass Whiteboard',
+    name: 'Quartet Infinity Magnetic Glass Whiteboard',
     category: 'Planning tools',
     bestFor: 'Persistent KPI and forecast visibility',
     whyItHelps:
@@ -185,6 +204,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'Glass boards cost more than basic whiteboards and require mounting space.',
     targetPages: ['startup-planning-tools', 'founder-office-setup'],
     recommended: true,
+    amazonAsin: 'B00H2XMP8I',
   },
   {
     id: 'casio-ms80b',
@@ -196,6 +216,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is basic; finance-heavy users may want a financial calculator instead.',
     targetPages: ['startup-planning-tools'],
     recommended: true,
+    amazonAsin: 'B003822IRA',
   },
   {
     id: 'hp-12c',
@@ -207,6 +228,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It has a learning curve and may be unnecessary if spreadsheets handle your finance work.',
     targetPages: ['startup-planning-tools'],
     recommended: true,
+    amazonAsin: 'B00BT2T8UQ',
   },
   {
     id: 'full-focus-planner',
@@ -218,6 +240,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is most useful if you consistently review goals and priorities.',
     targetPages: ['startup-planning-tools', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: '1732189692',
   },
   {
     id: 'pilot-frixion',
@@ -229,6 +252,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'Ink behavior can vary by paper and temperature.',
     targetPages: ['startup-planning-tools'],
     recommended: true,
+    amazonAsin: 'B004DOMK2U',
   },
   {
     id: 'dell-u2723qe',
@@ -240,6 +264,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It costs more than basic monitors and requires enough desk space.',
     targetPages: ['founder-office-setup', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: 'B0CS844XW2',
   },
   {
     id: 'lg-ultrawide',
@@ -251,6 +276,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'Some users prefer two smaller monitors for window management.',
     targetPages: ['founder-office-setup'],
     recommended: true,
+    amazonAsin: 'B0B924GWLJ',
   },
   {
     id: 'logitech-mx-keys-s',
@@ -262,6 +288,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'Keyboard feel is personal; some users may prefer mechanical switches.',
     targetPages: ['founder-office-setup', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: 'B0BKW3LB2B',
   },
   {
     id: 'logitech-mx-master-3s',
@@ -273,6 +300,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is larger than compact travel mice.',
     targetPages: ['founder-office-setup', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: 'B09HM94VDS',
   },
   {
     id: 'rain-design-mstand',
@@ -284,6 +312,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It works best with an external keyboard and mouse.',
     targetPages: ['founder-office-setup'],
     recommended: true,
+    amazonAsin: 'B000OOYECC',
   },
   {
     id: 'roost-stand',
@@ -295,10 +324,11 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It is more expensive than many basic laptop stands.',
     targetPages: ['founder-office-setup'],
     recommended: true,
+    amazonAsin: 'B01C9KG8IG',
   },
   {
     id: 'anker-usb-c-hub',
-    name: 'Anker USB-C Hub',
+    name: 'Anker 555 USB-C Hub',
     category: 'Office gear',
     bestFor: 'Laptop workstations with monitors and accessories',
     whyItHelps:
@@ -306,6 +336,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'Check port compatibility with your laptop and monitor before buying.',
     targetPages: ['founder-office-setup'],
     recommended: true,
+    amazonAsin: 'B087QZVQJX',
   },
   {
     id: 'benq-screenbar',
@@ -317,6 +348,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'Confirm it fits your monitor shape and webcam placement.',
     targetPages: ['founder-office-setup'],
     recommended: true,
+    amazonAsin: 'B08WT889V3',
   },
   {
     id: 'logitech-brio',
@@ -328,6 +360,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'Lighting and internet quality still matter more than resolution alone.',
     targetPages: ['founder-office-setup', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: 'B01N5UOYC4',
   },
   {
     id: 'blue-yeti',
@@ -339,6 +372,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'It can pick up room noise if the workspace is untreated.',
     targetPages: ['founder-office-setup'],
     recommended: true,
+    amazonAsin: 'B00N1YPXW2',
   },
   {
     id: 'sony-wh1000xm5',
@@ -350,6 +384,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'They are a premium purchase and fit preferences vary.',
     targetPages: ['founder-office-setup', 'saas-founder-toolkit'],
     recommended: true,
+    amazonAsin: 'B09NM4R3NX',
   },
   {
     id: 'elgato-key-light-air',
@@ -361,10 +396,12 @@ export const affiliateProducts: AffiliateProduct[] = [
     consider: 'A desk lamp may be enough if video quality is not a priority.',
     targetPages: ['founder-office-setup'],
     recommended: true,
+    amazonAsin: 'B082QHRZFW',
   },
 ];
 
 export function getAffiliateUrl(product: AffiliateProduct) {
+  if (product.amazonAsin) return amazonProductUrl(product.amazonAsin);
   return amazonSearchUrl(product.name);
 }
 
