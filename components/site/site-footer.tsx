@@ -5,6 +5,7 @@ import { CONTACT_EMAIL, SITE_NAME } from '@/lib/site';
 const productLinks = [
   { href: '/calculator', label: 'Calculator' },
   { href: '/tools', label: 'Calculator Toolkit' },
+  { href: '/resources', label: 'Founder Resources' },
   { href: '/templates', label: 'Templates' },
   { href: '/examples/saas-forecast-5000-mrr', label: 'Example Forecast' },
   { href: '/methodology', label: 'Methodology' },
@@ -17,6 +18,13 @@ const learnLinks = [
   { href: '/learn/saas-cac-payback', label: 'CAC Payback' },
   { href: '/learn/gross-revenue-retention-vs-net-revenue-retention', label: 'GRR vs NRR' },
   { href: '/learn/saas-kpi-glossary', label: 'SaaS KPI Glossary' },
+];
+
+const resourceLinks = [
+  { href: '/resources/best-saas-finance-books', label: 'SaaS Finance Books' },
+  { href: '/resources/startup-planning-tools', label: 'Planning Tools' },
+  { href: '/resources/founder-office-setup', label: 'Office Setup' },
+  { href: '/resources/saas-founder-toolkit', label: 'Founder Toolkit' },
 ];
 
 const companyLinks = [
@@ -66,7 +74,7 @@ export function SiteFooter() {
 
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* ── Main grid ── */}
-        <div className="grid gap-12 pb-12 pt-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] lg:gap-8">
+        <div className="grid gap-12 pb-12 pt-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr_1fr] lg:gap-8">
           {/* Brand column */}
           <div className="lg:pr-8">
             <Link href="/" aria-label={`${SITE_NAME} home`} className="group inline-flex items-center gap-3">
@@ -111,6 +119,7 @@ export function SiteFooter() {
           {/* Nav columns */}
           <FooterColumn title="Product" links={productLinks} />
           <FooterColumn title="Learn" links={learnLinks} />
+          <FooterColumn title="Resources" links={resourceLinks} />
           <FooterColumn title="Company" links={companyLinks} />
           <FooterColumn title="Legal" links={legalLinks} />
         </div>

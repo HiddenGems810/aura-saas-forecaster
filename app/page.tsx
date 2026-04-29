@@ -161,6 +161,9 @@ export default function Home() {
               <Link href="/tools" className="inline-flex items-center gap-2 rounded-md border border-white/15 px-4 py-3 text-sm font-semibold text-white hover:bg-white/10">
                 Explore tools
               </Link>
+              <Link href="/resources" className="inline-flex items-center gap-2 rounded-md border border-white/15 px-4 py-3 text-sm font-semibold text-white hover:bg-white/10">
+                Founder resources
+              </Link>
             </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {valueStrip.map((item) => (
